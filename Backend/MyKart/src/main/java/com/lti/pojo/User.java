@@ -37,6 +37,8 @@ public class User
 	public void setWishlist(List<Wishlist> wishlist) {
 		this.wishlist = wishlist;
 	}
+<<<<<<< HEAD
+=======
 	public List<Compare> getCompare() {
 		return compare;
 	}
@@ -55,15 +57,34 @@ public class User
 	public void setPayment(List<Payments> payment) {
 		this.payment = payment;
 	}
+>>>>>>> a4e3accdd0cb7f8de3d397a169ca67389bcff72c
 	@OneToMany(mappedBy = "tcompare", cascade = CascadeType.ALL)
     @JoinColumn(name="UserID", referencedColumnName="userid")
 	private List<Compare> compare;
     
-    @OneToMany(mappedBy = "tcart", cascade = CascadeType.ALL)
+    public List<Compare> getCompare() {
+		return compare;
+	}
+	public void setCompare(List<Compare> compare) {
+		this.compare = compare;
+	}
+	@OneToMany(mappedBy = "tcart", cascade = CascadeType.ALL)
     @JoinColumn(name="UserID", referencedColumnName="userid")
 	private List<Cart> cart;
     
-    @OneToMany(mappedBy = "tpayment", cascade = CascadeType.ALL)
+    public List<Payments> getPayment() {
+		return payment;
+	}
+	public void setPayment(List<Payments> payment) {
+		this.payment = payment;
+	}
+	public List<Cart> getCart() {
+		return cart;
+	}
+	public void setCart(List<Cart> cart) {
+		this.cart = cart;
+	}
+	@OneToMany(mappedBy = "tpayment", cascade = CascadeType.ALL)
     @JoinColumn(name="UserID", referencedColumnName="userid")
 	private List<Payments> payment;
     
