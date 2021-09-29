@@ -1,5 +1,6 @@
 package com.lti.pojo;
 
+import java.util.HashSet;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
@@ -205,6 +206,26 @@ public class Product
 		this.productbrand = productbrand;
 		this.productimage = productimage;
 		
+	}
+
+
+
+	public void addProductToCart(Cart cart) {
+		if(this.carts==null)
+			this.carts=new HashSet<>();
+		this.carts.add(cart);
+	}
+	
+	public void addProductToWishList(Wishlist wishlist) {
+		if(this.wishlists==null)
+			this.wishlists=new HashSet<>();
+		this.wishlists.add(wishlist);
+	}
+	
+	public void addCompare(Compare c) {
+		if(this.compares==null)
+			this.compares=new HashSet<>();
+		this.compares.add(c);
 	}
 
 	
