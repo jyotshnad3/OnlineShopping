@@ -1,5 +1,9 @@
 package com.lti.repository;
 
-public class UserRepoImpl {
 
+
+public class UserRepoImpl 
+{
+	
+	
 }

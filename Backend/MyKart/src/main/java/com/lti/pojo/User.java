@@ -42,7 +42,7 @@ public class User
     
     @OneToMany(mappedBy = "tpayment", cascade = CascadeType.ALL)
     @JoinColumn(name="UserID", referencedColumnName="userid")
-	private List<Payment> payment;
+	private List<Payments> payment;
     
     
 	public int getUserid() {
