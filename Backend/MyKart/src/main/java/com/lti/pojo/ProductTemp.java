@@ -19,6 +19,8 @@ public class ProductTemp
 	 private String tempproductstatus;
 	 
 	 
+	
+	 
 	 
 
 	public int getTempproductid() 

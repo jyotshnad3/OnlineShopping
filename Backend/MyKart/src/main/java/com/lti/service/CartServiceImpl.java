@@ -18,9 +18,9 @@ public class CartServiceImpl implements CartService{
 	
 	
 	@Override
-	public int addToCart(int userid, int productid) {
+	public int addToCart(int cartid, int productid) {
 		// TODO Auto-generated method stub
-		return cartrepo.addToCart(userid, productid);
+		return cartrepo.addToCart(cartid, productid);
 	}
 
 	@Override

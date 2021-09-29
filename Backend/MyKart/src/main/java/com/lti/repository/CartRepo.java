@@ -6,7 +6,7 @@ import com.lti.pojo.Cart;
 
 public interface CartRepo {
 
-	public int addToCart(int userid, int productid);
+	public int addToCart(int cartid, int productid);
 	public boolean deleteCartBycId(int cartid); 
 	public List<Cart> viewCart(int userid);
 	

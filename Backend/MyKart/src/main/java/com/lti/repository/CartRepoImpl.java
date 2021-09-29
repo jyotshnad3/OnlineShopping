@@ -1,5 +1,6 @@
 package com.lti.repository;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.EntityManager;
@@ -36,7 +37,19 @@ public class CartRepoImpl implements CartRepo{
 		//p.addProductToCart(cart);
 		//eMan.persist(u);
 		//eMan.persist(p);*/
-
+		Cart c=eMan.find(Cart.class, cartid);
+		Product p=eMan.find(Product.class, productid);
+		if(c.getProduct()==null)
+		{
+			List<Product> pl=new ArrayList<>();
+			pl.add(p);
+		}
+		else 
+		{
+			c.getProduct().add(p);
+		}
+		
+		
 
 		return 1;
 	}
@@ -44,7 +57,7 @@ public class CartRepoImpl implements CartRepo{
 		{
 			return -1;
 		}
-		
+		//return 0;
 
 	}
 
@@ -62,13 +75,13 @@ public class CartRepoImpl implements CartRepo{
 	}
 
 	@Override
-	public List<Cart> viewCart(int userid) {
+	public List<Cart> viewCart(int cartid) {
 		// TODO Auto-generated method stub
 		
 		List<Cart> cart = null;
-		Query qy=eMan.createQuery("Select e from Cart e where e.cUser.userid=:uId");
+		Query qy=eMan.createQuery("Select e from Cart e where e.cartid=:cartid");
 		try {
-			qy.setParameter("uId", userid);
+			qy.setParameter("cartid", cartid);
 			cart = qy.getResultList();
 		}
 
