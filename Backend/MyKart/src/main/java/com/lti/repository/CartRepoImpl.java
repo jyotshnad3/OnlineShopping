@@ -35,17 +35,20 @@ public class CartRepoImpl implements CartRepo{
 		Cart cart=new Cart();
 		cart.setCproduct(p);;
 		cart.setcUser(u);;
-		cart.setpIdq(1);  ///by default 1 quantity
+		cart.setpIdq(1);
+		eMan.persist(cart);///by default 1 quantity
 		//u.addProductToCart(cart);
 		//p.addProductToCart(cart);
-		eMan.persist(u);
-		eMan.persist(p);
+		//eMan.persist(u);
+		//eMan.persist(p);
 		return 1;
 	}
 		catch(Exception e)
 		{
 			return -1;
 		}
+		
+		//return 0;
 	}
 
 	@Override

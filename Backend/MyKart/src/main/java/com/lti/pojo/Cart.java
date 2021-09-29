@@ -29,11 +29,11 @@ public class Cart {
 	
 	//bidirectional many-to-one (Product table)
 	
-    @ManyToOne
+    
 	@JoinColumn(name = "productid")
 	private Product cproduct;
     
-    @ManyToOne
+  
 	@JoinColumn(name="userid")
     private User cUser;
     

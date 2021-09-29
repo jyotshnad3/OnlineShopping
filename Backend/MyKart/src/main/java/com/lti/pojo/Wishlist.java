@@ -23,12 +23,11 @@ public class Wishlist {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int wId;
 
-	@ManyToOne
+
 	@JoinColumn(name = "productid")
 	private Product wProducts;
 
-	
-	@ManyToOne
+
 	@JoinColumn(name = "userid")
 	private User wUser;
 
