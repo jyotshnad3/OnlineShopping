@@ -4,6 +4,15 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+
+import com.lti.pojo.Product;
+import com.lti.service.ProductService;
+
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -23,9 +32,19 @@ import com.lti.service.RetailerService;
 @RequestMapping("/MyKart/rest")
 public class MyRestController 
 {
+
+	@Autowired
+	ProductService Pservice;
+	
+	@GetMapping("/Product/{productcategory}")
+	public List<Product> productcategory(@PathVariable(name="productcategory") String productcategory)
+	{
+		return Pservice.getProduct(productcategory);
+	}
 	
 	
-    @Autowired
+	/*
+	@Autowired
 	RetailerService rs;
     
     @Autowired
@@ -45,12 +64,17 @@ public class MyRestController
 	public List<ProductTemp> getProductStatus()
 	{
 		return rs.getProductStatus();
+
 	}
+<<<<<<< HEAD
 	@GetMapping("/showretailers")
 	public List<Retailer> getRetailer()
 	{
 		return as.getRetailer();
 	}
+=======
+	*/
+>>>>>>> 9aa24f1eabbcd665183c1f56809acb78689d6155
 
 	
 }

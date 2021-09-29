@@ -78,6 +78,7 @@ public class ProductTemp
 	public void setTempproductstatus(String tempproductstatus) {
 		this.tempproductstatus = tempproductstatus;
 	}
+<<<<<<< HEAD
 	public int getTretailerid() {
 		return tretailerid;
 	}
@@ -85,6 +86,16 @@ public class ProductTemp
 		this.tretailerid = tretailerid;
 	}
 	public ProductTemp() {
+=======
+
+	
+	
+
+	
+
+	public ProductTemp() 
+	{
+>>>>>>> 9aa24f1eabbcd665183c1f56809acb78689d6155
 		super();
 		// TODO Auto-generated constructor stub
 	}
