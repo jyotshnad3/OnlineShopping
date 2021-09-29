@@ -21,21 +21,23 @@ public class CartRepoImpl implements CartRepo{
 	
 
 	@Override
-	public int addToCart(int userid, int productid) {
+	public int addToCart(int cartid, int productid) {
 		// TODO Auto-generated method stub
 		try {
-		User u=eMan.find(User.class, userid);
-		List<Cart> confirm=u.getCart();
-		
+		/*if(c)
 		Product p=eMan.find(Product.class, productid);
 		
 		Cart cart=new Cart();
-		cart.setCproduct(p);
-		
-		cart.setcUser(u);
+		 cart.setProduct(p);;
+		cart.setProduct(p);;;
 		cart.setpIdq(1);
-		eMan.persist(cart);
-		
+		eMan.persist(cart);///by default 1 quantity
+		//u.addProductToCart(cart);
+		//p.addProductToCart(cart);
+		//eMan.persist(u);
+		//eMan.persist(p);*/
+
+
 		return 1;
 	}
 		catch(Exception e)
@@ -43,7 +45,7 @@ public class CartRepoImpl implements CartRepo{
 			return -1;
 		}
 		
-		
+
 	}
 
 	@Override

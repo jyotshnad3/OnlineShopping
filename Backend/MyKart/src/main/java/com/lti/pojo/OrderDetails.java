@@ -2,66 +2,54 @@ package com.lti.pojo;
 
 import javax.persistence.*;
 
+@Entity
+@Table(name="torderdet")
 public class OrderDetails {
 	
-	private long oid;
+	@Id
+	private long oderid;
+	@Column(name="productid")
 	private int productid ;
+	@Column(name="pquantity")
 	private int pquantity;
-	
-	@ManyToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name = "productid")
-	private Product product;
-
-	public long getOid() {
-		return oid;
+	public long getOderid() {
+		return oderid;
 	}
-
-	public void setOid(long oid) {
-		this.oid = oid;
+	public void setOderid(long oderid) {
+		this.oderid = oderid;
 	}
-
 	public int getProductid() {
 		return productid;
 	}
-
 	public void setProductid(int productid) {
 		this.productid = productid;
 	}
-
 	public int getPquantity() {
 		return pquantity;
 	}
-
 	public void setPquantity(int pquantity) {
 		this.pquantity = pquantity;
 	}
-
-	public Product getProduct() {
-		return product;
-	}
-
-	public void setProduct(Product product) {
-		this.product = product;
-	}
-
-	public OrderDetails(long oid, int productid, int pquantity, Product product) {
-		super();
-		this.oid = oid;
-		this.productid = productid;
-		this.pquantity = pquantity;
-		this.product = product;
-	}
-
 	public OrderDetails() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-
+	
+	
+	public OrderDetails(long oderid, int productid, int pquantity) {
+		super();
+		this.oderid = oderid;
+		this.productid = productid;
+		this.pquantity = pquantity;
+	}
 	@Override
 	public String toString() {
-		return "OrderDetails [oid=" + oid + ", productid=" + productid + ", pquantity=" + pquantity + "]";
+		return "OrderDetails [oderid=" + oderid + ", productid=" + productid + ", pquantity=" + pquantity + "]";
 	}
 	
+
+ 
+   
 	
 
 }

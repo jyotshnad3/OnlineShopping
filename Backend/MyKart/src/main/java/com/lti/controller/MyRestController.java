@@ -19,6 +19,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.lti.service.CartService;
+
 import com.lti.pojo.ProductTemp;
 
 import com.lti.service.RetailerService;
@@ -29,6 +31,7 @@ import com.lti.service.RetailerService;
 @RequestMapping("/MyKart/rest")
 public class MyRestController 
 {
+<<<<<<< HEAD
 	@Autowired
 	ProductService Pservice;
 	
@@ -39,6 +42,11 @@ public class MyRestController
 	}
 	
 	@Autowired
+=======
+	
+	
+    @Autowired
+>>>>>>> ef0fdce23b384772e5acabe67217178a02372723
 	RetailerService rs;
 	
 	@PostMapping("/productsbyretailer")
@@ -57,5 +65,6 @@ public class MyRestController
 		return rs.getProductStatus();
 
 	}
+
 	
 }

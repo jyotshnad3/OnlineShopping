@@ -29,50 +29,49 @@ public class User
     
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name="wishlistid")
-	private List<Wishlist> wishlist;
+	private Wishlist wishlist;
     
-    public List<Wishlist> getWishlist() {
-		return wishlist;
-	}
-	public void setWishlist(List<Wishlist> wishlist) {
-		this.wishlist = wishlist;
-	}
-
 
 	@OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name="compareid")
-	private List<Compare> compare;
+	private Compare compare;
     
-    public List<Compare> getCompare() {
-		return compare;
-	}
-	public void setCompare(List<Compare> compare) {
-		this.compare = compare;
-	}
-	
+    
 	@OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name="cartid")
-	private List<Cart> cart;
+	private Cart cart;
+	
     
-	@OneToOne(cascade=CascadeType.ALL)
-	@JoinColumn(name="payid")
-    public List<Payments> getPayment() {
-		return payment;
-	}
-	public void setPayment(List<Payments> payment) {
-		this.payment = payment;
-	}
-	public List<Cart> getCart() {
+	public Cart getCart() {
 		return cart;
 	}
-	public void setCart(List<Cart> cart) {
+	@OneToOne(cascade=CascadeType.ALL)
+	@JoinColumn(name="payid")
+	private Payments payment;
+    
+
+	public Compare getCompare() {
+		return compare;
+	}
+	public void setCompare(Compare compare) {
+		this.compare = compare;
+	}
+	public void setCart(Cart cart) {
 		this.cart = cart;
 	}
-	@OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name="payid")
-	private List<Payments> payment;
+	public Wishlist getWishlist() {
+		return wishlist;
+	}
+	public void setWishlist(Wishlist wishlist) {
+		this.wishlist = wishlist;
+	}
     
-    
+	public Payments getPayment() {
+		return payment;
+	}
+	public void setPayment(Payments payment) {
+		this.payment = payment;
+	}
 	public int getUserid() {
 		return userid;
 	}
