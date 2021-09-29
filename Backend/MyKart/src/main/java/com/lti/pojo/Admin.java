@@ -11,9 +11,7 @@ public class Admin
 	private String adminemail;
 	private String adminpassword;
 	
-	@OneToMany(cascade=CascadeType.ALL)
-	@JoinColumn(name ="productid",referencedColumnName = "tempproductid")
-	private ProductTemp pt;
+	
 
 	public int getAdminid() 
 	{
@@ -55,15 +53,7 @@ public class Admin
 		this.adminpassword = adminpassword;
 	}
 
-	public ProductTemp getPt() 
-	{
-		return pt;
-	}
-
-	public void setPt(ProductTemp pt) 
-	{
-		this.pt = pt;
-	}
+	
 
 	public Admin() 
 	{
@@ -71,21 +61,21 @@ public class Admin
 		// TODO Auto-generated constructor stub
 	}
 
-	public Admin(int adminid, String adminname, String adminemail, String adminpassword, ProductTemp pt) 
-	{
+	public Admin(int adminid, String adminname, String adminemail, String adminpassword) {
 		super();
 		this.adminid = adminid;
 		this.adminname = adminname;
 		this.adminemail = adminemail;
 		this.adminpassword = adminpassword;
-		this.pt = pt;
 	}
 
 	@Override
 	public String toString() {
 		return "Admin [adminid=" + adminid + ", adminname=" + adminname + ", adminemail=" + adminemail
-				+ ", adminpassword=" + adminpassword + ", pt=" + pt + "]";
+				+ ", adminpassword=" + adminpassword + "]";
 	}
+
+	
 	
 	
 	

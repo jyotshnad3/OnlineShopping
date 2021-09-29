@@ -1,44 +1,57 @@
 package com.lti.repository;
-
-import java.util.ArrayList;
+import java.util.*;
+import com.lti.pojo.*;
 import java.util.List;
 
 import javax.persistence.EntityManager;
+import javax.persistence.JoinColumn;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import com.lti.pojo.Cart;
-import com.lti.pojo.Compare;
-import com.lti.pojo.Payments;
+import com.lti.pojo.Order;
 import com.lti.pojo.User;
-import com.lti.pojo.Wishlist;
 
 @Repository
-public class UserRepoImpl implements UserRepo 
-{
+public class UserRepoImpl implements UserRepo {
 
 	@Autowired
 	EntityManager eMan;
 	
 	@Override
 	public int addUser(User user) {
-		// TODO Auto-generated method stub
-		return 0;
+		eMan.persist(user);
+		try {
+			eMan.persist(user);
+					}
+		catch(Exception e)
+		{
+			System.out.println("Unable to add");
+			return -1;
+		}
+		return 1;
+		
 	}
 
 
 	@Override
 	public boolean addAddress(int userid, String address) {
-		// TODO Auto-generated method stub
-		return false;
+		
+		try {
+
+			User user = eMan.find(User.class, userid);
+			user.setAddress(address);
+			eMan.persist(user);
+
+		} catch (Exception e) {
+			System.out.println("unable to update address");
+			return false;
+		}
+		return true;
+		
 	}
 
-	@Override
-	public User updateUser(int userid, User user) {
-		// TODO Auto-generated method stub
-		return null;
-	}
+	
 
 
 	@Override
@@ -77,4 +90,15 @@ public class UserRepoImpl implements UserRepo
 		cmpr.add(c);
 		u.setCompare(cmpr);
 	}
+
+
+	
 }
+
+
+
+
+
+
+
+

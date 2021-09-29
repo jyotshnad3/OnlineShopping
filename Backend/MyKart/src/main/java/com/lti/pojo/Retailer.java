@@ -7,7 +7,7 @@ import javax.persistence.*;
 public class Retailer 
 {
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
+	
 	private int retailerid; 
 	private String retailername; 
 	private String retaileremail; 
