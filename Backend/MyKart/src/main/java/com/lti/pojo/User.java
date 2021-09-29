@@ -1,5 +1,6 @@
 package com.lti.pojo;
 
+
 import java.util.List;
 import java.util.Set;
 
@@ -11,12 +12,10 @@ import javax.persistence.JoinTable;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
-import org.springframework.stereotype.Component;
-
-
 
 
 @Entity
+
 @Table(name="tuser")
 public class User 
 {
@@ -32,7 +31,31 @@ public class User
     @JoinColumn(name="UserID", referencedColumnName="userid")
 	private List<Wishlist> wishlist;
     
-    @OneToMany(mappedBy = "tcompare", cascade = CascadeType.ALL)
+    public List<Wishlist> getWishlist() {
+		return wishlist;
+	}
+	public void setWishlist(List<Wishlist> wishlist) {
+		this.wishlist = wishlist;
+	}
+	public List<Compare> getCompare() {
+		return compare;
+	}
+	public void setCompare(List<Compare> compare) {
+		this.compare = compare;
+	}
+	public List<Cart> getCart() {
+		return cart;
+	}
+	public void setCart(List<Cart> cart) {
+		this.cart = cart;
+	}
+	public List<Payments> getPayment() {
+		return payment;
+	}
+	public void setPayment(List<Payments> payment) {
+		this.payment = payment;
+	}
+	@OneToMany(mappedBy = "tcompare", cascade = CascadeType.ALL)
     @JoinColumn(name="UserID", referencedColumnName="userid")
 	private List<Compare> compare;
     
