@@ -25,7 +25,7 @@ public class Cart {
 	
 
 	@Column(name="quantity")
-	private int pId;
+	private int pIdq;
 	
 	//bidirectional many-to-one (Product table)
 	
@@ -45,12 +45,12 @@ public class Cart {
 		this.cId = cId;
 	}
 
-	public int getpId() {
-		return pId;
+	public int getpIdq() {
+		return pIdq;
 	}
 
-	public void setpId(int pId) {
-		this.pId = pId;
+	public void setpIdq(int pIdq) {
+		this.pIdq = pIdq;
 	}
 
 	public Product getCproduct() {
@@ -71,7 +71,7 @@ public class Cart {
 
 	@Override
 	public String toString() {
-		return "Cart [cId=" + cId + ", pId=" + pId + ", cproduct=" + cproduct + ", cUser=" + cUser + "]";
+		return "Cart [cId=" + cId + ", pId=" + pIdq + ", cproduct=" + cproduct + ", cUser=" + cUser + "]";
 	}
 
 	public Cart() {
@@ -79,10 +79,10 @@ public class Cart {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Cart(int cId, int pId, Product cproduct, User cUser) {
+	public Cart(int cId, int pIdq, Product cproduct, User cUser) {
 		super();
 		this.cId = cId;
-		this.pId = pId;
+		this.pIdq = pIdq;
 		this.cproduct = cproduct;
 		this.cUser = cUser;
 	}
