@@ -53,7 +53,7 @@ public class Product
 	private Admin admin;
 	
 	@OneToMany(mappedBy = "wProducts", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-	private Set<WishList> wishlists;
+	private Set<Wishlist> wishlists;
 
 	@OneToMany(mappedBy = "compProducts", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	private Set<Compare> compares;
