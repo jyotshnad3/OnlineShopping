@@ -24,6 +24,7 @@ public class CartRepoImpl implements CartRepo{
 		try {
 		User u=eMan.find(User.class, userid);
 		List<Cart> confirm=u.getCart();
+		
 		for(Cart c:confirm)
 		{
 			if(c.getcUser().getUserid()==userid && c.getCproduct().getProductid()==productid)
@@ -32,8 +33,8 @@ public class CartRepoImpl implements CartRepo{
 		Product p=eMan.find(Product.class, productid);
 		
 		Cart cart=new Cart();
-		cart.setCproduct(p);
-		cart.setcUser(u);
+		cart.setCproduct(p);;
+		cart.setcUser(u);;
 		cart.setpIdq(1);  ///by default 1 quantity
 		//u.addProductToCart(cart);
 		//p.addProductToCart(cart);

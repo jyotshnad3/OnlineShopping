@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.lti.service.CartService;
 import com.lti.service.RetailerService;
 
 
@@ -12,5 +13,8 @@ import com.lti.service.RetailerService;
 @RequestMapping("/MyKart/rest")
 public class MyRestController 
 {
+	@Autowired
+	CartService cs;
+	
 	
 }
