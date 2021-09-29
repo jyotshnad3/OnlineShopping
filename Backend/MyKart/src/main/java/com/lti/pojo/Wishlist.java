@@ -13,8 +13,8 @@ import javax.persistence.Table;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
-@Component
-@Scope(scopeName="prototype")
+
+
 @Entity
 @Table(name = "twishlist")
 public class Wishlist {
@@ -23,12 +23,12 @@ public class Wishlist {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int wId;
 
-	@ManyToOne
+	
 	@JoinColumn(name = "productid")
 	private Product wProducts;
 
 	
-	@ManyToOne
+	
 	@JoinColumn(name = "userid")
 	private User wUser;
 

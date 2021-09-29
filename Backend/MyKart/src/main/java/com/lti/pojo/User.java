@@ -1,8 +1,8 @@
 package com.lti.pojo;
 
 
-import java.util.List;
-import java.util.Set;
+import java.util.*;
+
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
@@ -10,6 +10,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 
@@ -27,8 +28,8 @@ public class User
     private int mobileno;
     private String password;
     
-    @OneToMany(mappedBy = "twishlist", cascade = CascadeType.ALL)
-    @JoinColumn(name="UserID", referencedColumnName="userid")
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name="wishlistid")
 	private List<Wishlist> wishlist;
     
     public List<Wishlist> getWishlist() {
@@ -39,8 +40,8 @@ public class User
 	}
 
 
-	@OneToMany(mappedBy = "tcompare", cascade = CascadeType.ALL)
-    @JoinColumn(name="UserID", referencedColumnName="userid")
+	@OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name="compareid")
 	private List<Compare> compare;
     
     public List<Compare> getCompare() {
@@ -50,10 +51,12 @@ public class User
 		this.compare = compare;
 	}
 	
-	@OneToMany(mappedBy = "tcart", cascade = CascadeType.ALL)
-    @JoinColumn(name="UserID", referencedColumnName="userid")
+	@OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name="cartid")
 	private List<Cart> cart;
     
+	@OneToOne(cascade=CascadeType.ALL)
+	@JoinColumn(name="payid")
     public List<Payments> getPayment() {
 		return payment;
 	}
@@ -66,8 +69,8 @@ public class User
 	public void setCart(List<Cart> cart) {
 		this.cart = cart;
 	}
-	@OneToMany(mappedBy = "tpayment", cascade = CascadeType.ALL)
-    @JoinColumn(name="UserID", referencedColumnName="userid")
+	@OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name="payid")
 	private List<Payments> payment;
     
     

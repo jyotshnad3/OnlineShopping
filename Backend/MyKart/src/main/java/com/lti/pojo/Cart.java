@@ -1,5 +1,5 @@
 package com.lti.pojo;
-
+import java.util.*;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -12,8 +12,6 @@ import javax.persistence.Table;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
-@Component
-@Scope(scopeName="prototype")
 @Entity
 @Table(name="tcart")
 public class Cart {
@@ -29,11 +27,11 @@ public class Cart {
 	
 	//bidirectional many-to-one (Product table)
 	
-    @ManyToOne
+    
 	@JoinColumn(name = "productid")
 	private Product cproduct;
     
-    @ManyToOne
+    
 	@JoinColumn(name="userid")
     private User cUser;
     
