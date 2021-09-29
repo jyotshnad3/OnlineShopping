@@ -10,10 +10,11 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.lti.service.AdminService;
 import com.lti.service.CartService;
 
 import com.lti.pojo.ProductTemp;
-
+import com.lti.pojo.Retailer;
 import com.lti.service.RetailerService;
 
 
@@ -26,6 +27,9 @@ public class MyRestController
 	
     @Autowired
 	RetailerService rs;
+    
+    @Autowired
+    AdminService as;
 	
 	@PostMapping("/productsbyretailer")
 	public boolean addProduct(@RequestBody ProductTemp product)
@@ -33,7 +37,7 @@ public class MyRestController
 		return rs.addProduct(product);
 	}
 	@PutMapping("/productsbyretailer")
-	public boolean updateVehicle(@RequestBody ProductTemp product)
+	public boolean updateProduct(@RequestBody ProductTemp product)
 	{
 		return rs.updateProduct(product);
 	}
@@ -41,6 +45,11 @@ public class MyRestController
 	public List<ProductTemp> getProductStatus()
 	{
 		return rs.getProductStatus();
+	}
+	@GetMapping("/showretailers")
+	public List<Retailer> getRetailer()
+	{
+		return as.getRetailer();
 	}
 
 	

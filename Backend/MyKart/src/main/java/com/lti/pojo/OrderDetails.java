@@ -7,16 +7,17 @@ import javax.persistence.*;
 public class OrderDetails {
 	
 	@Id
-	private long oderid;
+	private long orderid;
 	@Column(name="productid")
 	private int productid ;
 	@Column(name="pquantity")
 	private int pquantity;
-	public long getOderid() {
-		return oderid;
+	
+	public long getOrderid() {
+		return orderid;
 	}
-	public void setOderid(long oderid) {
-		this.oderid = oderid;
+	public void setOrderid(long orderid) {
+		this.orderid = orderid;
 	}
 	public int getProductid() {
 		return productid;
@@ -34,18 +35,19 @@ public class OrderDetails {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	
-	
-	public OrderDetails(long oderid, int productid, int pquantity) {
+	public OrderDetails(long orderid, int productid, int pquantity) {
 		super();
-		this.oderid = oderid;
+		this.orderid = orderid;
 		this.productid = productid;
 		this.pquantity = pquantity;
 	}
 	@Override
 	public String toString() {
-		return "OrderDetails [oderid=" + oderid + ", productid=" + productid + ", pquantity=" + pquantity + "]";
+		return "OrderDetails [orderid=" + orderid + ", productid=" + productid + ", pquantity=" + pquantity + "]";
 	}
+	
+	
+	
 	
 
  
