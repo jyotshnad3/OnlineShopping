@@ -14,7 +14,7 @@ public class Compare
   @Id
   private int compareid;
   private int productid;
-  private int userid;
+
   
   
   
@@ -33,25 +33,20 @@ public int getProductid() {
 public void setProductid(int productid) {
 	this.productid = productid;
 }
-public int getUserid() {
-	return userid;
-}
-public void setUserid(int userid) {
-	this.userid = userid;
-}
+
 public Compare() {
 	super();
 	// TODO Auto-generated constructor stub
 }
-public Compare(int compareid, int productid, int userid) {
+public Compare(int compareid, int productid) {
 	super();
 	this.compareid = compareid;
 	this.productid = productid;
-	this.userid = userid;
+	
 }
 @Override
 public String toString() {
-	return "Compare [compareid=" + compareid + ", productid=" + productid + ", userid=" + userid + "]";
+	return "Compare [compareid=" + compareid + ", productid=" + productid + ", userid="+"]";
 }
   
   

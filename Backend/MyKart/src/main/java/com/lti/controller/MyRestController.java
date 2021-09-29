@@ -31,7 +31,7 @@ import com.lti.service.RetailerService;
 @RequestMapping("/MyKart/rest")
 public class MyRestController 
 {
-<<<<<<< HEAD
+
 	@Autowired
 	ProductService Pservice;
 	
@@ -41,12 +41,9 @@ public class MyRestController
 		return Pservice.getProduct(productcategory);
 	}
 	
+	
+	/*
 	@Autowired
-=======
-	
-	
-    @Autowired
->>>>>>> ef0fdce23b384772e5acabe67217178a02372723
 	RetailerService rs;
 	
 	@PostMapping("/productsbyretailer")
@@ -65,6 +62,7 @@ public class MyRestController
 		return rs.getProductStatus();
 
 	}
+	*/
 
 	
 }

@@ -10,7 +10,9 @@ import com.lti.pojo.Product;
 
 public interface MyJpaRepo extends JpaRepository<Product, String> 
 {
-	@Query("Select p.productname, p.productprice from Product p where p.productcategory=?1")
-	public List<Product> getProduct(String name);
+	
+	//@Query("Select p from Product p where p.productcategory LIKE %:type%")
+	//Printing Product by category
+	public List<Product> findByproductcategory(String type);
 
 }

@@ -19,7 +19,7 @@ public class ProductServiceImpl  implements ProductService{
 	
 	@Override
 	public List<Product> getProduct(String type) {
-		return jparepo.getProduct(type);
+		return jparepo.findByproductcategory(type);
 	}
 
 }

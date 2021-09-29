@@ -7,16 +7,17 @@ import javax.persistence.*;
 public class OrderDetails {
 	
 	@Id
-	private long oderid;
+	@Column(name="orderid")
+	private long orderid;
 	@Column(name="productid")
 	private int productid ;
 	@Column(name="pquantity")
 	private int pquantity;
-	public long getOderid() {
-		return oderid;
+	public long getOrderid() {
+		return orderid;
 	}
 	public void setOderid(long oderid) {
-		this.oderid = oderid;
+		this.orderid = oderid;
 	}
 	public int getProductid() {
 		return productid;
@@ -38,13 +39,13 @@ public class OrderDetails {
 	
 	public OrderDetails(long oderid, int productid, int pquantity) {
 		super();
-		this.oderid = oderid;
+		this.orderid = oderid;
 		this.productid = productid;
 		this.pquantity = pquantity;
 	}
 	@Override
 	public String toString() {
-		return "OrderDetails [oderid=" + oderid + ", productid=" + productid + ", pquantity=" + pquantity + "]";
+		return "OrderDetails [oderid=" + orderid + ", productid=" + productid + ", pquantity=" + pquantity + "]";
 	}
 	
 
