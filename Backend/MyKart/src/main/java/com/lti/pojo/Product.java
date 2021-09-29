@@ -49,20 +49,18 @@ public class Product
 	private String productimage;
 	
 	
-	@ManyToOne
-	@JoinColumn(name = "adminid")
-	private Admin admin;
 	
-	@OneToMany(mappedBy = "wProducts", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	
+	@OneToMany(cascade = CascadeType.ALL)
 	private Set<Wishlist> wishlists;
 
-	@OneToMany(mappedBy = "compProducts", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	@OneToMany( cascade = CascadeType.ALL)
 	private Set<Compare> compares;
 
-	@OneToMany(mappedBy = "cProducts", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	@OneToMany(cascade = CascadeType.ALL)
 	private Set<Cart> carts;
 
-	@OneToMany(mappedBy = "odProducts", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	@OneToMany(cascade = CascadeType.ALL)
 	private Set<OrderDetails> orderDetails;
 	
 
@@ -146,13 +144,7 @@ public class Product
 		this.productimage = productimage;
 	}
 
-	public Admin getAdmin() {
-		return admin;
-	}
-
-	public void setAdmin(Admin admin) {
-		this.admin = admin;
-	}
+	
 
 	public Set<Wishlist> getWishlists() {
 		return wishlists;
@@ -226,6 +218,16 @@ public class Product
 		if(this.compares==null)
 			this.compares=new HashSet<>();
 		this.compares.add(c);
+	}
+
+	@Override
+	public String toString() {
+		return "Product [productid=" + productid + ", retailerid=" + retailerid + ", productname=" + productname
+				+ ", productprice=" + productprice + ", productdesc=" + productdesc + ", productquantity="
+				+ productquantity + ", productcategory=" + productcategory + ", productsubcategory="
+				+ productsubcategory + ", productbrand=" + productbrand + ", productimage=" + productimage
+				+ ", wishlists=" + wishlists + ", compares=" + compares + ", carts=" + carts + ", orderDetails="
+				+ orderDetails + "]";
 	}
 
 	

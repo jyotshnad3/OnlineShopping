@@ -18,9 +18,8 @@ public class ProductTemp
 	 private String tempproductimage;
 	 private String tempproductstatus;
 	 
-	 @OneToMany(cascade=CascadeType.ALL)
-	 @JoinColumn(name ="retailertid",referencedColumnName = "retailerid")
-	 private Retailer tempretailerid;
+	 
+	 
 
 	public int getTempproductid() 
 	{
@@ -122,15 +121,9 @@ public class ProductTemp
 		this.tempproductstatus = tempproductstatus;
 	}
 
-	public Retailer getTempretailerid() 
-	{
-		return tempretailerid;
-	}
+	
 
-	public void setTempretailerid(Retailer tempretailerid) 
-	{
-		this.tempretailerid = tempretailerid;
-	}
+	
 
 	public ProductTemp() 
 	{
@@ -140,8 +133,7 @@ public class ProductTemp
 
 	public ProductTemp(int tempproductid, String tempproductname, int tempproductprice, String tempproductdesc,
 			int tempproductquantity, String tempproductcategory, String tempproductsubcategory, String tempproductbrand,
-			String tempproductimage, String tempproductstatus, Retailer tempretailerid) 
-	{
+			String tempproductimage, String tempproductstatus) {
 		super();
 		this.tempproductid = tempproductid;
 		this.tempproductname = tempproductname;
@@ -153,19 +145,20 @@ public class ProductTemp
 		this.tempproductbrand = tempproductbrand;
 		this.tempproductimage = tempproductimage;
 		this.tempproductstatus = tempproductstatus;
-		this.tempretailerid = tempretailerid;
 	}
 
 	@Override
-	public String toString() 
-	{
+	public String toString() {
 		return "ProductTemp [tempproductid=" + tempproductid + ", tempproductname=" + tempproductname
 				+ ", tempproductprice=" + tempproductprice + ", tempproductdesc=" + tempproductdesc
 				+ ", tempproductquantity=" + tempproductquantity + ", tempproductcategory=" + tempproductcategory
 				+ ", tempproductsubcategory=" + tempproductsubcategory + ", tempproductbrand=" + tempproductbrand
-				+ ", tempproductimage=" + tempproductimage + ", tempproductstatus=" + tempproductstatus
-				+ ", tempretailerid=" + tempretailerid + "]";
+				+ ", tempproductimage=" + tempproductimage + ", tempproductstatus=" + tempproductstatus + "]";
 	}
+
+	
+
+	
 	 
 	 
      

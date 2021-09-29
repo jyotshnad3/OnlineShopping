@@ -10,6 +10,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 
@@ -27,8 +28,8 @@ public class User
     private int mobileno;
     private String password;
     
-    @OneToMany(mappedBy = "twishlist", cascade = CascadeType.ALL)
-    @JoinColumn(name="UserID", referencedColumnName="userid")
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name="wishlistid", referencedColumnName="userid")
 	private List<Wishlist> wishlist;
     
     public List<Wishlist> getWishlist() {
@@ -39,8 +40,8 @@ public class User
 	}
 
 
-	@OneToMany(mappedBy = "tcompare", cascade = CascadeType.ALL)
-    @JoinColumn(name="UserID", referencedColumnName="userid")
+	@OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name="compareid", referencedColumnName="userid")
 	private List<Compare> compare;
     
     public List<Compare> getCompare() {
@@ -50,8 +51,8 @@ public class User
 		this.compare = compare;
 	}
 	
-	@OneToMany(mappedBy = "tcart", cascade = CascadeType.ALL)
-    @JoinColumn(name="UserID", referencedColumnName="userid")
+	@OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name="cartid", referencedColumnName="userid")
 	private List<Cart> cart;
     
     public List<Payments> getPayment() {
@@ -66,8 +67,8 @@ public class User
 	public void setCart(List<Cart> cart) {
 		this.cart = cart;
 	}
-	@OneToMany(mappedBy = "tpayment", cascade = CascadeType.ALL)
-    @JoinColumn(name="UserID", referencedColumnName="userid")
+	@OneToMany(cascade = CascadeType.ALL)
+    @JoinColumn(name="payid", referencedColumnName="userid")
 	private List<Payments> payment;
     
     

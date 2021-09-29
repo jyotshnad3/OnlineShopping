@@ -16,25 +16,10 @@ public class Compare
   private int productid;
   private int userid;
   
-  @ManyToOne
-	@JoinColumn(name ="productid")
-	private Product compareProducts;
   
-  public Product getCompareProducts() {
-	return compareProducts;
-}
-public void setCompareProducts(Product compareProducts) {
-	this.compareProducts = compareProducts;
-}
-public User getCompareUser() {
-	return compareUser;
-}
-public void setCompareUser(User compareUser) {
-	this.compareUser = compareUser;
-}
-@ManyToOne
-	@JoinColumn(name = "userid")
-	private User compareUser;
+  
+  
+
   
   public int getCompareid() {
 	return compareid;

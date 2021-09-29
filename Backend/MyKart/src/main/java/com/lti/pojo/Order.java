@@ -24,11 +24,11 @@ public class Order {
 	private long oid;
 	private double oprice;
 	private int oquantity;
-	private String opurchasedetai;
+	private String opurchasedetail;
 	private String oaddress;
 
-	@OneToOne(mappedBy="")
-	
+	@OneToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name = "payid")
 	private Payments p;
 
 	public long getOid() {
