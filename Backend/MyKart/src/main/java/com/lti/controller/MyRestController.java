@@ -1,9 +1,16 @@
 package com.lti.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+
+import com.lti.pojo.Product;
+import com.lti.service.ProductService;
 import com.lti.service.RetailerService;
 
 
@@ -12,5 +19,13 @@ import com.lti.service.RetailerService;
 @RequestMapping("/MyKart/rest")
 public class MyRestController 
 {
+	@Autowired
+	ProductService Pservice;
+	
+	@GetMapping("/Product/{productcategory}")
+	public List<Product> productcategory(@PathVariable(name="productcategory") String productcategory)
+	{
+		return Pservice.getProduct(productcategory);
+	}
 	
 }
