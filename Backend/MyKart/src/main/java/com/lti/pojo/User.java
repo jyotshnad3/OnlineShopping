@@ -16,7 +16,6 @@ import javax.persistence.Table;
 
 
 @Entity
-
 @Table(name="tuser")
 public class User 
 {
