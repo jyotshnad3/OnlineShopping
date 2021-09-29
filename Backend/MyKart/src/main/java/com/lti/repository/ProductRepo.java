@@ -15,9 +15,9 @@ public interface ProductRepo
 //	public List<Product> filterProduct(String brand, int s, int e);
 
 //public List<Product> getProduct();	
-	
+/*	
 public void addProductToCart(Cart cart);
 public void addProductToWishList(Wishlist wishlist);
-public void addCompare(Compare c);
+public void addCompare(Compare c);*/
 
 }

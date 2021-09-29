@@ -1,5 +1,7 @@
 package com.lti.pojo;
 import java.util.*;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -7,6 +9,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import org.springframework.context.annotation.Scope;
@@ -27,14 +30,18 @@ public class Cart {
 	
 	//bidirectional many-to-one (Product table)
 	
-    
+    @OneToMany(cascade=CascadeType.ALL)
 	@JoinColumn(name = "productid")
-	private Product cproduct;
-    
-	
-	@JoinColumn(name="userid")
-    private User cUser;
-    
+	private List<Product> product;
+
+	public List<Product> getProduct() {
+		return product;
+	}
+
+	public void setProduct(List<Product> product) {
+		this.product = product;
+	}
+
 	public int getcId() {
 		return cId;
 	}
@@ -51,25 +58,9 @@ public class Cart {
 		this.pIdq = pIdq;
 	}
 
-	public Product getCproduct() {
-		return cproduct;
-	}
-
-	public void setCproduct(Product cproduct) {
-		this.cproduct = cproduct;
-	}
-
-	public User getcUser() {
-		return cUser;
-	}
-
-	public void setcUser(User cUser) {
-		this.cUser = cUser;
-	}
-
 	@Override
 	public String toString() {
-		return "Cart [cId=" + cId + ", pId=" + pIdq + ", cproduct=" + cproduct + ", cUser=" + cUser + "]";
+		return "Cart [cId=" + cId + ", pIdq=" + pIdq + ", product=" + product + "]";
 	}
 
 	public Cart() {
@@ -77,15 +68,17 @@ public class Cart {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Cart(int cId, int pIdq, Product cproduct, User cUser) {
+	public Cart(int cId, int pIdq, List<Product> product) {
 		super();
 		this.cId = cId;
 		this.pIdq = pIdq;
-		this.cproduct = cproduct;
-		this.cUser = cUser;
+		this.product = product;
 	}
     
+	
     
+
+	
 	
 	
 

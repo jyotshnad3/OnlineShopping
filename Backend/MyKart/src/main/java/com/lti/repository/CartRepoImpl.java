@@ -21,29 +21,21 @@ public class CartRepoImpl implements CartRepo{
 	
 
 	@Override
-	public int addToCart(int userid, int productid) {
+	public int addToCart(int cartid, int productid) {
 		// TODO Auto-generated method stub
 		try {
-		User u=eMan.find(User.class, userid);
-		List<Cart> confirm=u.getCart();
-		
-
-		for(Cart c:confirm)
-		{
-			if(c.getcUser().getUserid()==userid && c.getCproduct().getProductid()==productid)
-				return 0;
-		}
+		/*if(c)
 		Product p=eMan.find(Product.class, productid);
 		
 		Cart cart=new Cart();
-		cart.setCproduct(p);;
-		cart.setcUser(u);;
+		 cart.setProduct(p);;
+		cart.setProduct(p);;;
 		cart.setpIdq(1);
 		eMan.persist(cart);///by default 1 quantity
 		//u.addProductToCart(cart);
 		//p.addProductToCart(cart);
 		//eMan.persist(u);
-		//eMan.persist(p);
+		//eMan.persist(p);*/
 
 
 		return 1;

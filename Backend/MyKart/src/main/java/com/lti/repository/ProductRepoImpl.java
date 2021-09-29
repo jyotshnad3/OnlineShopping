@@ -27,7 +27,7 @@ public class ProductRepoImpl implements ProductRepo{
 		return list1;
 		
 	}*/
-
+   /*
 	@Override
 	public void addProductToCart(Cart cart) {
 		
@@ -56,6 +56,6 @@ public class ProductRepoImpl implements ProductRepo{
 		s.add(c);
 		p.setCompares(s);
 		
-	}
+	}*/
 
 }

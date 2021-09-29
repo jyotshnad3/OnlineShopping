@@ -47,22 +47,27 @@ public class Product
 	
 	@Column(name="productimage")
 	private String productimage;
-	
-	
-	
-	
-	@OneToMany(cascade = CascadeType.ALL)
-	private Set<Wishlist> wishlists;
 
-	@OneToMany( cascade = CascadeType.ALL)
-	private Set<Compare> compares;
+	public Product() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
 
-	@OneToMany(cascade = CascadeType.ALL)
-	private Set<Cart> carts;
-
-	@OneToMany(cascade = CascadeType.ALL)
-	private Set<OrderDetails> orderDetails;
-	
+	public Product(int productid, int retailerid, String productname, int productprice, String productdesc,
+			int productquantity, String productcategory, String productsubcategory, String productbrand,
+			String productimage) {
+		super();
+		this.productid = productid;
+		this.retailerid = retailerid;
+		this.productname = productname;
+		this.productprice = productprice;
+		this.productdesc = productdesc;
+		this.productquantity = productquantity;
+		this.productcategory = productcategory;
+		this.productsubcategory = productsubcategory;
+		this.productbrand = productbrand;
+		this.productimage = productimage;
+	}
 
 	public int getProductid() {
 		return productid;
@@ -143,95 +148,27 @@ public class Product
 	public void setProductimage(String productimage) {
 		this.productimage = productimage;
 	}
-
-	
-
-	public Set<Wishlist> getWishlists() {
-		return wishlists;
-	}
-
-	public void setWishlists(Set<Wishlist> wishlists) {
-		this.wishlists = wishlists;
-	}
-
-	public Set<Compare> getCompares() {
-		return compares;
-	}
-
-	public void setCompares(Set<Compare> compares) {
-		this.compares = compares;
-	}
-
-	public Set<Cart> getCarts() {
-		return carts;
-	}
-
-	public void setCarts(Set<Cart> carts) {
-		this.carts = carts;
-	}
-
-	public Set<OrderDetails> getOrderDetails() {
-		return orderDetails;
-	}
-
-	public void setOrderDetails(Set<OrderDetails> orderDetails) {
-		this.orderDetails = orderDetails;
-	}
-
-	public Product() {
-		super();
-		// TODO Auto-generated constructor stub
-	}
-
-	public Product(int productid, int retailerid, String productname, int productprice, String productdesc,
-			int productquantity, String productcategory, String productsubcategory, String productbrand,
-			String productimage) {
-		super();
-		this.productid = productid;
-		this.retailerid = retailerid;
-		this.productname = productname;
-		this.productprice = productprice;
-		this.productdesc = productdesc;
-		this.productquantity = productquantity;
-		this.productcategory = productcategory;
-		this.productsubcategory = productsubcategory;
-		this.productbrand = productbrand;
-		this.productimage = productimage;
-		
-	}
-
-
-
-	public void addProductToCart(Cart cart) {
-		if(this.carts==null)
-			this.carts=new HashSet<>();
-		this.carts.add(cart);
-	}
-	
-	public void addProductToWishList(Wishlist wishlist) {
-		if(this.wishlists==null)
-			this.wishlists=new HashSet<>();
-		this.wishlists.add(wishlist);
-	}
-	
-	public void addCompare(Compare c) {
-		if(this.compares==null)
-			this.compares=new HashSet<>();
-		this.compares.add(c);
-	}
-
-	@Override
-	public String toString() {
-		return "Product [productid=" + productid + ", retailerid=" + retailerid + ", productname=" + productname
-				+ ", productprice=" + productprice + ", productdesc=" + productdesc + ", productquantity="
-				+ productquantity + ", productcategory=" + productcategory + ", productsubcategory="
-				+ productsubcategory + ", productbrand=" + productbrand + ", productimage=" + productimage
-				+ ", wishlists=" + wishlists + ", compares=" + compares + ", carts=" + carts + ", orderDetails="
-				+ orderDetails + "]";
-	}
-
 	
 	
+	
+	
+	/*@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+	@JoinColumn(name="wishlistid")
+	private Set<Wishlist> wishlists;
+
+	@OneToMany( cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+	@JoinColumn(name="compareid")
+	private Set<Compare> compares;*/
+
+	/*@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+	@JoinColumn(name="cartid")
+	private Set<Cart> carts;*/
+
+	/*@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+	@JoinColumn(name="oderid")
+	private Set<OrderDetails> orderDetails;*/
+	
+
 	
 	
 	

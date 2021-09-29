@@ -57,38 +57,31 @@ public class UserRepoImpl implements UserRepo {
 	@Override
 	public void addProductToCart(Cart cart) 
 	{
-		User u=new User();
-		List<Cart> crt=new ArrayList<>();
-		crt.add(cart);
-		u.setCart(crt);
+		
+		eMan.persist(cart);
+		System.out.println("Added product to cart");
 		
 	}
 	
 	@Override
 	public void addProductToWishList(Wishlist wishlist)
 	{
-		User u=new User();
-		List<Wishlist> wshlst=new ArrayList<>();
-		wshlst.add(wishlist);
-		u.setWishlist(wshlst);
+		eMan.persist(wishlist);
+		System.out.println("Added product to wishlist");
 	}
 	
 	@Override
 	public void addPayIdToPayment(Payments payment)
 	{
-		User u=new User();
-		List<Payments> pymnt=new ArrayList<>();
-		pymnt.add(payment);
-	    u.setPayment(pymnt);
+		eMan.persist(payment);
+		System.out.println("Added payment");
 	}
 	
 	@Override
 	public void addCompare(Compare c) 
 	{
-		User u=new User();
-		List<Compare> cmpr=new ArrayList<>();
-		cmpr.add(c);
-		u.setCompare(cmpr);
+		eMan.persist(c);
+		System.out.println("Added to compare");
 	}
 
 

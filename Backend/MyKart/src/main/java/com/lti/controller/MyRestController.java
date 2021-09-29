@@ -22,10 +22,9 @@ import com.lti.service.RetailerService;
 @RequestMapping("/MyKart/rest")
 public class MyRestController 
 {
-	@Autowired
-	CartService cs;
 	
-
+	
+    @Autowired
 	RetailerService rs;
 	
 	@PostMapping("/productsbyretailer")
