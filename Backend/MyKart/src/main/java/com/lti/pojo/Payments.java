@@ -1,18 +1,20 @@
 package com.lti.pojo;
-
+import javax.persistence.*;
 import javax.persistence.CascadeType;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
-
+@Entity
+@Table(name="tpayment")
 public class Payments 
 {
+	@Id
+	@Column(name = "payid")
 	private long payid;
+	@Column(name = "paytype")
 	private String paytype;
 
-	@ManyToOne(cascade=CascadeType.ALL)
-	@JoinColumn(name = "userid")
-	private User userid;
+	
 
 	public long getPayid() {
 		return payid;
@@ -30,19 +32,14 @@ public class Payments
 		this.paytype = paytype;
 	}
 
-	public User getUserid() {
-		return userid;
-	}
+	
 
-	public void setUserid(User userid) {
-		this.userid = userid;
-	}
+	
 
-	public Payments(long payid, String paytype, User userid) {
+	public Payments(long payid, String paytype) {
 		super();
 		this.payid = payid;
 		this.paytype = paytype;
-		this.userid = userid;
 	}
 
 	public Payments() {

@@ -17,6 +17,8 @@ public class CartRepoImpl implements CartRepo{
     
 	@Autowired
 	private EntityManager eMan;
+	
+	
 
 	@Override
 	public int addToCart(int userid, int productid) {
@@ -24,27 +26,24 @@ public class CartRepoImpl implements CartRepo{
 		try {
 		User u=eMan.find(User.class, userid);
 		List<Cart> confirm=u.getCart();
-		for(Cart c:confirm)
-		{
-			if(c.getcUser().getUserid()==userid && c.getCproduct().getProductid()==productid)
-				return 0;
-		}
+		
 		Product p=eMan.find(Product.class, productid);
 		
 		Cart cart=new Cart();
 		cart.setCproduct(p);
+		
 		cart.setcUser(u);
-		cart.setpIdq(1);  ///by default 1 quantity
-		//u.addProductToCart(cart);
-		//p.addProductToCart(cart);
-		eMan.persist(u);
-		eMan.persist(p);
+		cart.setpIdq(1);
+		eMan.persist(cart);
+		
 		return 1;
 	}
 		catch(Exception e)
 		{
 			return -1;
 		}
+		
+		
 	}
 
 	@Override

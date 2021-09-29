@@ -1,8 +1,8 @@
 package com.lti.pojo;
 
 
-import java.util.List;
-import java.util.Set;
+import java.util.*;
+
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
@@ -29,7 +29,7 @@ public class User
     private String password;
     
     @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name="wishlistid", referencedColumnName="userid")
+    @JoinColumn(name="wishlistid")
 	private List<Wishlist> wishlist;
     
     public List<Wishlist> getWishlist() {
@@ -41,7 +41,7 @@ public class User
 
 
 	@OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name="compareid", referencedColumnName="userid")
+    @JoinColumn(name="compareid")
 	private List<Compare> compare;
     
     public List<Compare> getCompare() {
@@ -52,9 +52,11 @@ public class User
 	}
 	
 	@OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name="cartid", referencedColumnName="userid")
+    @JoinColumn(name="cartid")
 	private List<Cart> cart;
     
+	@OneToOne(cascade=CascadeType.ALL)
+	@JoinColumn(name="payid")
     public List<Payments> getPayment() {
 		return payment;
 	}
@@ -67,8 +69,8 @@ public class User
 	public void setCart(List<Cart> cart) {
 		this.cart = cart;
 	}
-	@OneToMany(cascade = CascadeType.ALL)
-    @JoinColumn(name="payid", referencedColumnName="userid")
+	@OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name="payid")
 	private List<Payments> payment;
     
     
