@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 
 
-import org.springframework.web.bind.annotation.PathVariable;
+
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -20,8 +20,7 @@ import com.lti.service.ProductService;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+
 
 import com.lti.service.CartService;
 import com.lti.pojo.Cart;
@@ -46,7 +45,7 @@ public class MyRestController
 	}
 	
 	
-<<<<<<< HEAD
+
 	@GetMapping("/Product/search/{productname}")
 	public List<Product> productsearch(@PathVariable(name="productname") String productname)
 	{
@@ -56,9 +55,7 @@ public class MyRestController
 	
 	
 	/*
-=======
-	
->>>>>>> b05b72d6450dec4409d73dd1c1726d9b27a7c4ee
+
 	@Autowired
 	RetailerService rs;
     
@@ -100,6 +97,6 @@ public class MyRestController
 	{
 		return rs.getProductStatus();
 
-	}
+	}*/
 	
 }
