@@ -16,8 +16,10 @@ public class OrderDetails {
 	public long getOrderid() {
 		return orderid;
 	}
+
 	public void setOderid(long oderid) {
 		this.orderid = oderid;
+
 	}
 	public int getProductid() {
 		return productid;

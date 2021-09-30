@@ -3,7 +3,11 @@ package com.lti.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+
+import org.springframework.web.bind.annotation.PathVariable;
+
 
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -20,7 +24,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.lti.service.CartService;
-
+import com.lti.pojo.Cart;
 import com.lti.pojo.ProductTemp;
 
 import com.lti.service.RetailerService;
@@ -42,6 +46,7 @@ public class MyRestController
 	}
 	
 	
+<<<<<<< HEAD
 	@GetMapping("/Product/search/{productname}")
 	public List<Product> productsearch(@PathVariable(name="productname") String productname)
 	{
@@ -51,8 +56,34 @@ public class MyRestController
 	
 	
 	/*
+=======
+	
+>>>>>>> b05b72d6450dec4409d73dd1c1726d9b27a7c4ee
 	@Autowired
 	RetailerService rs;
+    
+    @Autowired
+    CartService cs;
+    
+    @GetMapping("/cartdetails/{cartid}")
+	public List<Cart> getCartDetails(@PathVariable (name="cartid") int cartid)
+	{
+	  	return cs.viewCart(cartid);
+	}
+
+	@DeleteMapping("/cartdetailsD/{cartid}")
+	public boolean deleteVehicle(@PathVariable (name="cartid") int cartid)
+	{
+		return cs.deleteCartBycId(cartid);
+	}
+	
+	
+	@GetMapping(path = "/cartdetails/{cartid}/{productid}") 
+	public int addToCartList(@PathVariable("cartid") int cartid,@PathVariable("productid") int productid)
+	{
+		return cs.addToCart(cartid, productid);
+	}
+    
 	
 	@PostMapping("/productsbyretailer")
 	public boolean addProduct(@RequestBody ProductTemp product)
@@ -70,7 +101,5 @@ public class MyRestController
 		return rs.getProductStatus();
 
 	}
-	*/
-
 	
 }
