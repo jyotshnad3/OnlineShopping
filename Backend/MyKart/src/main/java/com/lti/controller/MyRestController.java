@@ -42,6 +42,14 @@ public class MyRestController
 	}
 	
 	
+	@GetMapping("/Product/search/{productname}")
+	public List<Product> productsearch(@PathVariable(name="productname") String productname)
+	{
+		return Pservice.search(productname);
+	}
+	
+	
+	
 	/*
 	@Autowired
 	RetailerService rs;

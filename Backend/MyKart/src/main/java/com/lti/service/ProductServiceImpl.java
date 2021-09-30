@@ -22,4 +22,15 @@ public class ProductServiceImpl  implements ProductService{
 		return jparepo.findByproductcategory(type);
 	}
 
+	@Override
+	public List<Product> search(String type) {
+	
+		return jparepo.searchproduct(type);
+	}
+
+	/*@Override
+	public List<Product> getbyPrice(int type) {
+		return jparepo.findByproductprice(type);	
+	}*/
+
 }
