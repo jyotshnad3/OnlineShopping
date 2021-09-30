@@ -7,6 +7,7 @@ import javax.persistence.*;
 public class OrderDetails {
 	
 	@Id
+	@Column(name="orderid")
 	private long orderid;
 	@Column(name="productid")
 	private int productid ;
@@ -15,8 +16,10 @@ public class OrderDetails {
 	public long getOrderid() {
 		return orderid;
 	}
-	public void setOrderid(long odrerid) {
-		this.orderid = orderid;
+
+	public void setOderid(long oderid) {
+		this.orderid = oderid;
+
 	}
 	public int getProductid() {
 		return productid;

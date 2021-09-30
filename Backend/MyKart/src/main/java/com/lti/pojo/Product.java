@@ -148,6 +148,14 @@ public class Product
 	public void setProductimage(String productimage) {
 		this.productimage = productimage;
 	}
+
+	@Override
+	public String toString() {
+		return "Product [productid=" + productid + ", retailerid=" + retailerid + ", productname=" + productname
+				+ ", productprice=" + productprice + ", productdesc=" + productdesc + ", productquantity="
+				+ productquantity + ", productcategory=" + productcategory + ", productsubcategory="
+				+ productsubcategory + ", productbrand=" + productbrand + ", productimage=" + productimage + "]";
+	}
 	
 	
 	

@@ -39,14 +39,20 @@ public class CartRepoImpl implements CartRepo{
 		//eMan.persist(p);*/
 		Cart c=eMan.find(Cart.class, cartid);
 		Product p=eMan.find(Product.class, productid);
+		System.out.print(c.getProduct());
+		
 		if(c.getProduct()==null)
 		{
 			List<Product> pl=new ArrayList<>();
 			pl.add(p);
+			c.setProduct(pl);
+			eMan.merge(c);
 		}
 		else 
 		{
 			c.getProduct().add(p);
+			eMan.merge(c);
+			System.out.print(c.getProduct());
 		}
 		
 		
@@ -79,7 +85,7 @@ public class CartRepoImpl implements CartRepo{
 		// TODO Auto-generated method stub
 		
 		List<Cart> cart = null;
-		Query qy=eMan.createQuery("Select e from Cart e where e.cartid=:cartid");
+		Query qy=eMan.createQuery("Select e from Cart e where e.cId=:cartid");
 		try {
 			qy.setParameter("cartid", cartid);
 			cart = qy.getResultList();

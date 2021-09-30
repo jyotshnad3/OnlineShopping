@@ -14,6 +14,7 @@ public class Compare
   @Id
   private int compareid;
   private int productid;
+
   
   public int getCompareid() {
 	return compareid;
@@ -36,11 +37,15 @@ public Compare(int compareid, int productid) {
 	super();
 	this.compareid = compareid;
 	this.productid = productid;
+
 }
 @Override
 public String toString() {
 	return "Compare [compareid=" + compareid + ", productid=" + productid + "]";
+
+	
 }
+
   
   
 }
