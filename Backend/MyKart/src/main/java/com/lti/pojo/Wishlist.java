@@ -10,6 +10,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
@@ -25,17 +27,43 @@ public class Wishlist {
 	@Id
 	@Column(name = "wishlistid")
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private int wId;
+	private int wishlistid;
 
 
-	@OneToMany(cascade=CascadeType.ALL)
-	@JoinColumn(name = "productid")
-	private List<Product> wProducts;
+	@ManyToMany(cascade = CascadeType.ALL)
+	@JoinTable(name = "wishlistx_wishItems" , joinColumns = {
+			  @JoinColumn(name = "WISHLIST_ID",referencedColumnName = "wishlistid",nullable = true)
+	  },
+	  inverseJoinColumns = {
+			  @JoinColumn(name = "PRODUCT_ID",referencedColumnName = "productid",nullable = true)
+	  }
+	  )
+	List<Product> product12;
+
+
+	public int getWishlistid() {
+		return wishlistid;
+	}
+
+
+	public void setWishlistid(int wishlistid) {
+		this.wishlistid = wishlistid;
+	}
+
+
+	public List<Product> getProduct12() {
+		return product12;
+	}
+
+
+	public void setProduct12(List<Product> product12) {
+		this.product12 = product12;
+	}
 
 
 	@Override
 	public String toString() {
-		return "Wishlist [wId=" + wId + ", wProducts=" + wProducts + "]";
+		return "Wishlist [wishlistid=" + wishlistid + ", product12=" + product12 + "]";
 	}
 
 
@@ -45,34 +73,15 @@ public class Wishlist {
 	}
 
 
-	public Wishlist(int wId, List<Product> wProducts) {
+	public Wishlist(int wishlistid, List<Product> product12) {
 		super();
-		this.wId = wId;
-		this.wProducts = wProducts;
+		this.wishlistid = wishlistid;
+		this.product12 = product12;
 	}
 
 
-	public int getwId() {
-		return wId;
-	}
-
-
-	public void setwId(int wId) {
-		this.wId = wId;
-	}
-
-
-	public List<Product> getwProducts() {
-		return wProducts;
-	}
-
-
-	public void setwProducts(List<Product> wProducts) {
-		this.wProducts = wProducts;
-	}
-
-    
 	
+
 	
 
 }

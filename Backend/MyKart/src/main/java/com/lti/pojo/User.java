@@ -50,28 +50,7 @@ public class User
 	private Payments payment;
     
 
-	public Compare getCompare() {
-		return compare;
-	}
-	public void setCompare(Compare compare) {
-		this.compare = compare;
-	}
-	public void setCart(Cart cart) {
-		this.cart = cart;
-	}
-	public Wishlist getWishlist() {
-		return wishlist;
-	}
-	public void setWishlist(Wishlist wishlist) {
-		this.wishlist = wishlist;
-	}
-    
-	public Payments getPayment() {
-		return payment;
-	}
-	public void setPayment(Payments payment) {
-		this.payment = payment;
-	}
+	
 	public int getUserid() {
 		return userid;
 	}

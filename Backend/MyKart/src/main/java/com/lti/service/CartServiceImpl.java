@@ -40,4 +40,10 @@ public class CartServiceImpl implements CartService{
 		
 	}
 
+	@Override
+	public boolean updateCart(int cId, int addOrMinus) {
+		// TODO Auto-generated method stub
+		return cartrepo.updateCart(cId, addOrMinus);
+	}
+
 }

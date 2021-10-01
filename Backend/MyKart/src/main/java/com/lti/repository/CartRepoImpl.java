@@ -25,25 +25,14 @@ public class CartRepoImpl implements CartRepo{
 	public int addToCart(int cartid, int productid) {
 		// TODO Auto-generated method stub
 		try {
-		/*if(c)
-		Product p=eMan.find(Product.class, productid);
-		
-		Cart cart=new Cart();
-		 cart.setProduct(p);;
-		cart.setProduct(p);;;
-		cart.setpIdq(1);
-		eMan.persist(cart);///by default 1 quantity
-		//u.addProductToCart(cart);
-		//p.addProductToCart(cart);
-		//eMan.persist(u);
-		//eMan.persist(p);*/
 		Cart c=eMan.find(Cart.class, cartid);
+
 		Product p=eMan.find(Product.class, productid);
 		System.out.print(c.getProduct());
 		
 		if(c.getProduct()==null)
 		{
-			List<Product> pl=new ArrayList<>();
+			List<Product> pl=new ArrayList<Product>();
 			pl.add(p);
 			c.setProduct(pl);
 			eMan.merge(c);
@@ -85,7 +74,7 @@ public class CartRepoImpl implements CartRepo{
 		// TODO Auto-generated method stub
 		
 		List<Cart> cart = null;
-		Query qy=eMan.createQuery("Select e from Cart e where e.cId=:cartid");
+		Query qy=eMan.createQuery("Select e from Cart e where e.cartid=:cartid");
 		try {
 			qy.setParameter("cartid", cartid);
 			cart = qy.getResultList();
@@ -96,6 +85,41 @@ public class CartRepoImpl implements CartRepo{
 		}
 		return cart;
 	}
+
+	@Override
+	public boolean updateCart(int cartid, int addOrMinus) {
+		// TODO Auto-generated method stub
+		Cart cart=eMan.find(Cart.class,cartid);
+		if(addOrMinus == 1)
+		{
+			Product product=eMan.find(Product.class, cart.getProduct().get(0).getProductid());
+		int productquantity=product.getProductquantity();
+		System.out.println(productquantity);
+		if(cart.getQuantity()+1<=productquantity)
+		{
+			cart.setQuantity(cart.getQuantity() + 1);
+			eMan.merge(cart);
+			return true;
+		}
+		else {System.out.println("Out of stock");
+		return false;
+		}
+		}
+		 else
+		 {
+			if (cart.getQuantity() - 1 >= 1) {
+				
+				cart.setQuantity(cart.getQuantity() - 1);
+				eMan.merge(cart);
+				return true;
+			} else {
+				System.out.println("quantity cannot be negative");
+				return false;
+		       }
+	     }
+	}
+	
+	
+}
 	
 
-}

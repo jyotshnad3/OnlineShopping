@@ -26,8 +26,9 @@ import org.springframework.web.bind.annotation.RestController;
 import com.lti.service.CartService;
 import com.lti.pojo.Cart;
 import com.lti.pojo.ProductTemp;
-
+import com.lti.pojo.Wishlist;
 import com.lti.service.RetailerService;
+import com.lti.service.WishlistService;
 
 
 
@@ -39,6 +40,15 @@ public class MyRestController
 	@Autowired
 	ProductService Pservice;
 	
+	@Autowired
+	WishlistService ws;
+	
+	@Autowired
+	RetailerService rs;
+    
+    @Autowired
+    CartService cs;
+	
 	@GetMapping("/Product/{productcategory}")
 	public List<Product> productcategory(@PathVariable(name="productcategory") String productcategory)
 	{
@@ -46,12 +56,6 @@ public class MyRestController
 	}
 	
 	
-	
-	@Autowired
-	RetailerService rs;
-    
-    @Autowired
-    CartService cs;
     
     @GetMapping("/cartdetails/{cartid}")
 	public List<Cart> getCartDetails(@PathVariable (name="cartid") int cartid)
@@ -72,6 +76,31 @@ public class MyRestController
 		return cs.addToCart(cartid, productid);
 	}
     
+	@GetMapping(path = "/cartdetailsUpdate/{cId}/{addOrMinus}")
+	public boolean updateCart(@PathVariable("cId") int cId,@PathVariable("addOrMinus") int addOrMinus){
+		return cs.updateCart(cId, addOrMinus);
+	}
+	
+	
+	
+	@GetMapping("/wishlistdetails/{wishlistid}")
+	public List<Wishlist> getwishlistDetails(@PathVariable (name="wishlistid") int wishlistid)
+	{
+	  	return ws.viewWishList(wishlistid);
+	}
+
+	@DeleteMapping("/wishlistdetailsD/{wishlistid}")
+	public boolean deletewishlist(@PathVariable (name="wishlistid") int wishlistid)
+	{
+		return ws.deleteWishList(wishlistid);
+	}
+	
+	
+	@GetMapping(path = "/wishlistdetails/{wishlistid}/{productid}") 
+	public int addToWishList(@PathVariable("wishlistid") int wishlistid,@PathVariable("productid") int productid)
+	{
+		return ws.addToWishList(wishlistid, productid);
+	}
 	
 	@PostMapping("/productsbyretailer")
 	public boolean addProduct(@RequestBody ProductTemp product)
