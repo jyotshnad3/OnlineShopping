@@ -4,6 +4,7 @@ import java.util.List;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 
@@ -18,17 +19,25 @@ import org.springframework.web.bind.annotation.RestController;
 import com.lti.pojo.Product;
 import com.lti.service.ProductService;
 
+
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.lti.service.AdminService;
 import com.lti.service.CartService;
 import com.lti.pojo.Cart;
 import com.lti.pojo.ProductTemp;
 
+<<<<<<< HEAD
+=======
+import com.lti.pojo.Retailer;
+
+>>>>>>> 56241b81218b23f07e5e7a589c909788026b4985
 import com.lti.pojo.Wishlist;
+
 import com.lti.service.RetailerService;
 import com.lti.service.WishlistService;
 
@@ -41,6 +50,7 @@ import com.lti.service.UserService;
 
 @RestController
 @RequestMapping("/MyKart/rest")
+@CrossOrigin(origins="http://localhost:4200")
 public class MyRestController 
 {  
 	@Autowired
@@ -51,13 +61,21 @@ public class MyRestController
 	{
 		return userservice.searchUser(userid);
 	}
+<<<<<<< HEAD
 
+=======
+	
+>>>>>>> 56241b81218b23f07e5e7a589c909788026b4985
 	@GetMapping("/getuserbyid/{userid}")
 	public List<User> searchUser(@PathVariable(name="userid") int userid){
 		
 	return userservice.searchUser(userid);
 		
 	}
+<<<<<<< HEAD
+=======
+	
+>>>>>>> 56241b81218b23f07e5e7a589c909788026b4985
 	
 
 	
@@ -78,11 +96,26 @@ public class MyRestController
 	
 
 	
+<<<<<<< HEAD
 	@Autowired
 	RetailerService rs;
     
     @Autowired
     CartService cs;
+=======
+
+
+	
+
+	
+    
+    @Autowired
+
+    AdminService as;
+    
+   
+    
+>>>>>>> 56241b81218b23f07e5e7a589c909788026b4985
 
     
     @GetMapping("/cartdetails/{cartid}")
@@ -129,22 +162,55 @@ public class MyRestController
 	{
 		return ws.addToWishList(wishlistid, productid);
 	}
+
 	
-	@PostMapping("/productsbyretailer")
+	@PostMapping("/addproductsbyretailer")
 	public boolean addProduct(@RequestBody ProductTemp product)
 	{
 		return rs.addProduct(product);
 	}
-	@PutMapping("/productsbyretailer")
-	public boolean updateVehicle(@RequestBody ProductTemp product)
+	@PutMapping("/updateproductsbyretailer")
+	public boolean updateProduct(@RequestBody ProductTemp product)
 	{
 		return rs.updateProduct(product);
 	}
-	@GetMapping("/productsbyretailer")
+	@GetMapping("/productstatus")
 	public List<ProductTemp> getProductStatus()
 	{
 		return rs.getProductStatus();
 
 	}
 
+<<<<<<< HEAD
+=======
+   //----------------------------------------------------
+	@GetMapping("/showretailers")
+	public List<Retailer> getRetailer()
+	{
+		return as.getRetailer();
+	}
+	@PostMapping("/acceptproduct")
+	public boolean acceptProduct(@RequestBody ProductTemp product)  //********
+	{
+		return as.acceptProduct(product);
+	}
+	@DeleteMapping("/rejectproduct/{id}")
+	public boolean deleteProduct(@PathVariable(name="id")int id)
+	{
+		return as.deleteProduct(id);
+	}
+	@PostMapping("/addretailers")
+	public boolean addRetailer(@RequestBody Retailer r) 
+	{
+		return as.addRetailer(r);
+	}
+	//------------------------------------------------------
+	
+	
+	
+
+	
+
+
+>>>>>>> 56241b81218b23f07e5e7a589c909788026b4985
 }

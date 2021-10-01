@@ -6,8 +6,12 @@ import com.lti.pojo.Product;
 
 
 
+
+
+
 public interface ProductService {
 	
 	public List<Product> getProduct(String type);
 
+	public List<Product> search(String type);
 }

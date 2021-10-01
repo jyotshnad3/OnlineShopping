@@ -17,6 +17,10 @@ public class ProductTemp
 	 private String tempproductbrand;
 	 private String tempproductimage;
 	 private String tempproductstatus;
+
+	 private int tempretailerid;
+	
+
 	 
 	 
 	
@@ -25,118 +29,79 @@ public class ProductTemp
 
 	public int getTempproductid() 
 	{
+
 		return tempproductid;
 	}
-
-	public void setTempproductid(int tempproductid) 
-	{
+	public void setTempproductid(int tempproductid) {
 		this.tempproductid = tempproductid;
 	}
-
-	public String getTempproductname() 
-	{
+	public String getTempproductname() {
 		return tempproductname;
 	}
-
-	public void setTempproductname(String tempproductname) 
-	{
+	public void setTempproductname(String tempproductname) {
 		this.tempproductname = tempproductname;
 	}
-
-	public int getTempproductprice() 
-	{
+	public int getTempproductprice() {
 		return tempproductprice;
 	}
-
-	public void setTempproductprice(int tempproductprice) 
-	{
+	public void setTempproductprice(int tempproductprice) {
 		this.tempproductprice = tempproductprice;
 	}
-
-	public String getTempproductdesc() 
-	{
+	public String getTempproductdesc() {
 		return tempproductdesc;
 	}
-
-	public void setTempproductdesc(String tempproductdesc) 
-	{
+	public void setTempproductdesc(String tempproductdesc) {
 		this.tempproductdesc = tempproductdesc;
 	}
-
-	public int getTempproductquantity() 
-	{
+	public int getTempproductquantity() {
 		return tempproductquantity;
 	}
-
-	public void setTempproductquantity(int tempproductquantity) 
-	{
+	public void setTempproductquantity(int tempproductquantity) {
 		this.tempproductquantity = tempproductquantity;
 	}
-
-	public String getTempproductcategory() 
-	{
+	public String getTempproductcategory() {
 		return tempproductcategory;
 	}
-
-	public void setTempproductcategory(String tempproductcategory) 
-	{
+	public void setTempproductcategory(String tempproductcategory) {
 		this.tempproductcategory = tempproductcategory;
 	}
-
-	public String getTempproductsubcategory() 
-	{
+	public String getTempproductsubcategory() {
 		return tempproductsubcategory;
 	}
-
-	public void setTempproductsubcategory(String tempproductsubcategory) 
-	{
+	public void setTempproductsubcategory(String tempproductsubcategory) {
 		this.tempproductsubcategory = tempproductsubcategory;
 	}
-
-	public String getTempproductbrand() 
-	{
+	public String getTempproductbrand() {
 		return tempproductbrand;
 	}
-
-	public void setTempproductbrand(String tempproductbrand) 
-	{
+	public void setTempproductbrand(String tempproductbrand) {
 		this.tempproductbrand = tempproductbrand;
 	}
-
-	public String getTempproductimage() 
-	{
+	public String getTempproductimage() {
 		return tempproductimage;
 	}
-
-	public void setTempproductimage(String tempproductimage) 
-	{
+	public void setTempproductimage(String tempproductimage) {
 		this.tempproductimage = tempproductimage;
 	}
-
-	public String getTempproductstatus() 
-	{
+	public String getTempproductstatus() {
 		return tempproductstatus;
 	}
-
-	public void setTempproductstatus(String tempproductstatus) 
-	{
+	public void setTempproductstatus(String tempproductstatus) {
 		this.tempproductstatus = tempproductstatus;
 	}
-
-	
-	
-
-	
-
-	public ProductTemp() 
-	{
+	public int getTempretailerid() {
+		return tempretailerid;
+	}
+	public void setTempretailerid(int tempretailerid) {
+		this.tempretailerid = tempretailerid;
+	}
+	public ProductTemp() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-
 	public ProductTemp(int tempproductid, String tempproductname, int tempproductprice, String tempproductdesc,
 			int tempproductquantity, String tempproductcategory, String tempproductsubcategory, String tempproductbrand,
-			String tempproductimage, String tempproductstatus) {
+			String tempproductimage, String tempproductstatus, int tempretailerid) {
 		super();
 		this.tempproductid = tempproductid;
 		this.tempproductname = tempproductname;
@@ -148,16 +113,21 @@ public class ProductTemp
 		this.tempproductbrand = tempproductbrand;
 		this.tempproductimage = tempproductimage;
 		this.tempproductstatus = tempproductstatus;
+		this.tempretailerid = tempretailerid;
 	}
-
 	@Override
 	public String toString() {
 		return "ProductTemp [tempproductid=" + tempproductid + ", tempproductname=" + tempproductname
 				+ ", tempproductprice=" + tempproductprice + ", tempproductdesc=" + tempproductdesc
 				+ ", tempproductquantity=" + tempproductquantity + ", tempproductcategory=" + tempproductcategory
 				+ ", tempproductsubcategory=" + tempproductsubcategory + ", tempproductbrand=" + tempproductbrand
-				+ ", tempproductimage=" + tempproductimage + ", tempproductstatus=" + tempproductstatus + "]";
+				+ ", tempproductimage=" + tempproductimage + ", tempproductstatus=" + tempproductstatus
+				+ ", tempretailerid=" + tempretailerid + "]";
 	}
+	
+	 
+	 
+	 
 
 	
 
