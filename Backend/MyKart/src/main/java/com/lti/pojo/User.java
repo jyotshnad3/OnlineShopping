@@ -24,10 +24,10 @@ public class User
     private String name;
     private String emailid;
     private String address;
-    private int mobileno;
+    private String mobileno;
     private String password;
     
-    @OneToOne(cascade = CascadeType.ALL)
+   @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name="wishlistid")
 	private Wishlist wishlist;
     
@@ -50,7 +50,32 @@ public class User
 	private Payments payment;
     
 
+<<<<<<< HEAD
 	
+=======
+	public Compare getCompare() {
+		return compare;
+	}
+	public void setCompare(Compare compare) {
+		this.compare = compare;
+	}
+	public void setCart(Cart cart) {
+		this.cart = cart;
+	}
+	public Wishlist getWishlist() {
+		return wishlist;
+	}
+	public void setWishlist(Wishlist wishlist) {
+		this.wishlist = wishlist;
+	}
+    
+	public Payments getPayment() {
+		return payment;
+	}
+	public void setPayment(Payments payment) {
+		this.payment = payment;  
+	}
+>>>>>>> 9889c3cc21cafbff2a480023318b9b5043e0da65
 	public int getUserid() {
 		return userid;
 	}
@@ -75,10 +100,11 @@ public class User
 	public void setAddress(String address) {
 		this.address = address;
 	}
-	public int getMobileno() {
+	
+	public String getMobileno() {
 		return mobileno;
 	}
-	public void setMobileno(int mobileno) {
+	public void setMobileno(String mobileno) {
 		this.mobileno = mobileno;
 	}
 	public String getPassword() {
@@ -91,7 +117,8 @@ public class User
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	public User(int userid, String name, String emailid, String address, int mobileno, String password) {
+	
+	public User(int userid, String name, String emailid, String address, String mobileno, String password) {
 		super();
 		this.userid = userid;
 		this.name = name;
