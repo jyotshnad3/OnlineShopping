@@ -19,12 +19,12 @@ public interface UserService
 	
     public int addUser(User user);
 	public boolean addAddress(int userid, String address);
-	public User updateUser(int userid, User user);
+	
 	public void addProductToCart(Cart cart);
 	public void addProductToWishList(Wishlist wishlist);
 	public void addPayIdToPayment(Payments payment);
 	public void addCompare(Compare c);
-	
+	public List<User> searchUser(int userid);
 	
 	
 	

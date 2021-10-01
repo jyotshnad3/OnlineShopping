@@ -24,10 +24,10 @@ public class User
     private String name;
     private String emailid;
     private String address;
-    private int mobileno;
+    private String mobileno;
     private String password;
     
-    @OneToOne(cascade = CascadeType.ALL)
+   @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name="wishlistid")
 	private Wishlist wishlist;
     
@@ -70,7 +70,7 @@ public class User
 		return payment;
 	}
 	public void setPayment(Payments payment) {
-		this.payment = payment;
+		this.payment = payment;  
 	}
 	public int getUserid() {
 		return userid;
@@ -96,10 +96,11 @@ public class User
 	public void setAddress(String address) {
 		this.address = address;
 	}
-	public int getMobileno() {
+	
+	public String getMobileno() {
 		return mobileno;
 	}
-	public void setMobileno(int mobileno) {
+	public void setMobileno(String mobileno) {
 		this.mobileno = mobileno;
 	}
 	public String getPassword() {
@@ -112,7 +113,8 @@ public class User
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	public User(int userid, String name, String emailid, String address, int mobileno, String password) {
+	
+	public User(int userid, String name, String emailid, String address, String mobileno, String password) {
 		super();
 		this.userid = userid;
 		this.name = name;
