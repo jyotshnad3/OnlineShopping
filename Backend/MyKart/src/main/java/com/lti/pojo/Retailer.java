@@ -15,11 +15,6 @@ public class Retailer
 	
 	
 	
-	@OneToMany(cascade=CascadeType.ALL)
-    @JoinColumn(name ="productid")
-	private List<ProductTemp> pid;
-	
-	
 	
 	public int getRetailerid() 
 	{
@@ -53,15 +48,6 @@ public class Retailer
 	public void setRetailerphnumber(String retailerphnumber) 
 	{
 		this.retailerphnumber = retailerphnumber;
-	}
-	public List<ProductTemp> getPid() 
-	{
-		return pid;
-	}
-
-	public void setPid(List<ProductTemp> pid) 
-	{
-		this.pid = pid;
 	}
 	
 	public Retailer() 

@@ -30,9 +30,9 @@ public class AdminServiceImpl implements AdminService
 	}
 
 	@Override
-	public boolean deleteProduct(ProductTemp product) {
+	public boolean deleteProduct(int id) {
 		
-		return ar.deleteProduct(product);
+		return ar.deleteProduct(id);
 	}
 
 	@Override

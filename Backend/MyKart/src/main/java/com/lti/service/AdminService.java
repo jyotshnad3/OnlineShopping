@@ -9,7 +9,7 @@ public interface AdminService
 {
 	public boolean addRetailer(Retailer r);
 	public boolean acceptProduct(ProductTemp product);
-	public boolean deleteProduct(ProductTemp product);
+	public boolean deleteProduct(int id);
 	
 	public List<Retailer> getRetailer();
 }

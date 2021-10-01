@@ -17,7 +17,7 @@ public class ProductTemp
 	 private String tempproductbrand;
 	 private String tempproductimage;
 	 private String tempproductstatus;
-	 private int tretailerid;
+	 private int tempretailerid;
 	public int getTempproductid() {
 		return tempproductid;
 	}
@@ -78,30 +78,19 @@ public class ProductTemp
 	public void setTempproductstatus(String tempproductstatus) {
 		this.tempproductstatus = tempproductstatus;
 	}
-<<<<<<< HEAD
-	public int getTretailerid() {
-		return tretailerid;
+	public int getTempretailerid() {
+		return tempretailerid;
 	}
-	public void setTretailerid(int tretailerid) {
-		this.tretailerid = tretailerid;
+	public void setTempretailerid(int tempretailerid) {
+		this.tempretailerid = tempretailerid;
 	}
 	public ProductTemp() {
-=======
-
-	
-	
-
-	
-
-	public ProductTemp() 
-	{
->>>>>>> 9aa24f1eabbcd665183c1f56809acb78689d6155
 		super();
 		// TODO Auto-generated constructor stub
 	}
 	public ProductTemp(int tempproductid, String tempproductname, int tempproductprice, String tempproductdesc,
 			int tempproductquantity, String tempproductcategory, String tempproductsubcategory, String tempproductbrand,
-			String tempproductimage, String tempproductstatus, int tretailerid) {
+			String tempproductimage, String tempproductstatus, int tempretailerid) {
 		super();
 		this.tempproductid = tempproductid;
 		this.tempproductname = tempproductname;
@@ -113,7 +102,7 @@ public class ProductTemp
 		this.tempproductbrand = tempproductbrand;
 		this.tempproductimage = tempproductimage;
 		this.tempproductstatus = tempproductstatus;
-		this.tretailerid = tretailerid;
+		this.tempretailerid = tempretailerid;
 	}
 	@Override
 	public String toString() {
@@ -122,8 +111,9 @@ public class ProductTemp
 				+ ", tempproductquantity=" + tempproductquantity + ", tempproductcategory=" + tempproductcategory
 				+ ", tempproductsubcategory=" + tempproductsubcategory + ", tempproductbrand=" + tempproductbrand
 				+ ", tempproductimage=" + tempproductimage + ", tempproductstatus=" + tempproductstatus
-				+ ", tretailerid=" + tretailerid + "]";
+				+ ", tempretailerid=" + tempretailerid + "]";
 	}
+	
 	 
 	 
 	 

@@ -1,5 +1,6 @@
 package com.lti.repository;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.EntityManager;
@@ -17,6 +18,8 @@ public class AdminRepoImpl implements AdminRepo
 	EntityManager eMan;
 	
 	Product p=new Product();
+	ProductTemp pt=new ProductTemp();
+	
 
 	@Override
 	public boolean addRetailer(Retailer r) 
@@ -29,23 +32,29 @@ public class AdminRepoImpl implements AdminRepo
 	public boolean acceptProduct(ProductTemp product) 
 	{
 		p.setProductid(product.getTempproductid());
+		p.setRetailerid(product.getTempretailerid());
 		p.setProductname(product.getTempproductname());
-		p.setProductbrand(product.getTempproductbrand());
-		p.setProductcategory(product.getTempproductcategory());
-		p.setProductdesc(product.getTempproductdesc());
-		p.setProductimage(product.getTempproductimage());
 		p.setProductprice(product.getTempproductprice());
+		p.setProductdesc(product.getTempproductdesc());
 		p.setProductquantity(product.getTempproductquantity());
+		p.setProductcategory(product.getTempproductcategory());
 		p.setProductsubcategory(product.getTempproductsubcategory());
-		p.setRetailerid(product.getTretailerid());
-		eMan.persist(p);
-		eMan.remove(product);
+		p.setProductbrand(product.getTempproductbrand());
+			
+		p.setProductimage(product.getTempproductimage());
+				
+		eMan.merge(p);
+		
+		product.setTempproductstatus("Accepted");
+		eMan.merge(product);
 		return true;
 	}
 
 	@Override
-	public boolean deleteProduct(ProductTemp product) {
-		eMan.remove(product);
+	public boolean deleteProduct(int id) {
+		ProductTemp obj=eMan.find(ProductTemp.class, id);
+		obj.setTempproductstatus("Rejected");
+		eMan.merge(obj);
 		return true;
 	}
 

@@ -9,4 +9,5 @@ public interface RetailerRepo
 	public boolean addProduct(ProductTemp product);
 	public boolean updateProduct(ProductTemp product);
 	public List<ProductTemp> getProductStatus();
+	
 }
