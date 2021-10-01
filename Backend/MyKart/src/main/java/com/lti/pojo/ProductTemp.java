@@ -17,10 +17,10 @@ public class ProductTemp
 	 private String tempproductbrand;
 	 private String tempproductimage;
 	 private String tempproductstatus;
-<<<<<<< HEAD
+
 	 private int tempretailerid;
-	public int getTempproductid() {
-=======
+	
+
 	 
 	 
 	
@@ -29,7 +29,7 @@ public class ProductTemp
 
 	public int getTempproductid() 
 	{
->>>>>>> cbfcf68bc77cb57bc3ce8cf33d7c4f6447eaaffa
+
 		return tempproductid;
 	}
 	public void setTempproductid(int tempproductid) {

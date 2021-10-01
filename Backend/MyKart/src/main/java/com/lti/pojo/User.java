@@ -50,9 +50,9 @@ public class User
 	private Payments payment;
     
 
-<<<<<<< HEAD
+
 	
-=======
+
 	public Compare getCompare() {
 		return compare;
 	}
@@ -75,7 +75,7 @@ public class User
 	public void setPayment(Payments payment) {
 		this.payment = payment;  
 	}
->>>>>>> 9889c3cc21cafbff2a480023318b9b5043e0da65
+
 	public int getUserid() {
 		return userid;
 	}

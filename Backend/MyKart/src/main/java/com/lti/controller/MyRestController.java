@@ -4,6 +4,7 @@ import java.util.List;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 
@@ -29,24 +30,24 @@ import com.lti.service.AdminService;
 import com.lti.service.CartService;
 import com.lti.pojo.Cart;
 import com.lti.pojo.ProductTemp;
-<<<<<<< HEAD
+
 import com.lti.pojo.Retailer;
-=======
-<<<<<<< HEAD
+
 import com.lti.pojo.Wishlist;
->>>>>>> cbfcf68bc77cb57bc3ce8cf33d7c4f6447eaaffa
+
 import com.lti.service.RetailerService;
 import com.lti.service.WishlistService;
 
 
-=======
+
 import com.lti.pojo.User;
 import com.lti.service.RetailerService;
 import com.lti.service.UserService;
->>>>>>> 9889c3cc21cafbff2a480023318b9b5043e0da65
+
 
 @RestController
 @RequestMapping("/MyKart/rest")
+@CrossOrigin(origins="http://localhost:4200")
 public class MyRestController 
 {  
 	@Autowired
@@ -57,14 +58,14 @@ public class MyRestController
 	{
 		return userservice.searchUser(userid);
 	}
-	/*
+	
 	@GetMapping("/getuserbyid/{userid}")
 	public List<User> searchUser(@PathVariable(name="userid") int userid){
 		
 	return userservice.searchUser(userid);
 		
 	}
-	/*
+	
 	
 	
 	@Autowired
@@ -86,24 +87,21 @@ public class MyRestController
 	}
 	
 	
-<<<<<<< HEAD
+
 	
-=======
-<<<<<<< HEAD
-=======
-	/*
->>>>>>> cbfcf68bc77cb57bc3ce8cf33d7c4f6447eaaffa
-	@Autowired
-	RetailerService rs;
+
+
+	
+
+	
     
     @Autowired
-<<<<<<< HEAD
+
     AdminService as;
     
    
-=======
-    CartService cs;
->>>>>>> 9889c3cc21cafbff2a480023318b9b5043e0da65
+    
+
     
     @GetMapping("/cartdetails/{cartid}")
 	public List<Cart> getCartDetails(@PathVariable (name="cartid") int cartid)
@@ -149,7 +147,7 @@ public class MyRestController
 	{
 		return ws.addToWishList(wishlistid, productid);
 	}
->>>>>>> cbfcf68bc77cb57bc3ce8cf33d7c4f6447eaaffa
+
 	
 	@PostMapping("/addproductsbyretailer")
 	public boolean addProduct(@RequestBody ProductTemp product)
@@ -167,7 +165,7 @@ public class MyRestController
 		return rs.getProductStatus();
 
 	}
-<<<<<<< HEAD
+
    //----------------------------------------------------
 	@GetMapping("/showretailers")
 	public List<Retailer> getRetailer()
@@ -195,7 +193,6 @@ public class MyRestController
 	
 
 	
-=======
-	*/
->>>>>>> cbfcf68bc77cb57bc3ce8cf33d7c4f6447eaaffa
+
+
 }
