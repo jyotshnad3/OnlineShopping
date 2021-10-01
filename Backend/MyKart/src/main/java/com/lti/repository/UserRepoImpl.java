@@ -5,6 +5,7 @@ import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.JoinColumn;
+import javax.persistence.Query;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -84,6 +85,24 @@ public class UserRepoImpl implements UserRepo {
 		System.out.println("Added to compare");
 	}
 
+
+	@Override
+	public List<User> searchUser(int userid) 
+	{
+		List<User> usr=null;
+		Query qry=eMan.createQuery("Select e from User e where e.userid=:userid");
+		qry.setParameter("userid",userid);
+		usr=qry.getResultList();
+		/*try {
+			qry.setParameter("userid",userid);
+			usr=qry.getResultList();
+		}
+		catch(Exception e)
+		{
+			System.out.println("No users exist");
+		}*/
+		return usr;
+	}
 
 	
 }

@@ -20,10 +20,8 @@ import com.lti.pojo.Wishlist;
 public interface UserRepo
 { 
 	public int addUser(User user);
-	
-	public boolean addAddress(int userid, String address);
-	//public User updateUser(int userid, User user);
-	
+	public List<User> searchUser(int userid);
+	public boolean addAddress(int userid, String address);	
 	public void addProductToCart(Cart cart);
 	public void addProductToWishList(Wishlist wishlist);
 	public void addPayIdToPayment(Payments payment);
@@ -32,7 +30,7 @@ public interface UserRepo
 	/*public List<Cart> getCartOfUser(int userid);
 	
 	public List<Wishlist> getWishlistOfUser(int userid);
-	
+	//public User updateUser(int userid, User user);
 	public List<Product> findAllProductByCategory(String keyword);
 	
 	public Product findAllProductByProductid(int pId); 

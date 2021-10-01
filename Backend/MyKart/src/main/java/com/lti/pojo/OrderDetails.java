@@ -21,9 +21,13 @@ public class OrderDetails {
 	public long getOrderid() {
 		return orderid;
 	}
+<<<<<<< HEAD
 	
 
 	
+=======
+
+>>>>>>> cbfcf68bc77cb57bc3ce8cf33d7c4f6447eaaffa
 	public void setOderid(long oderid) {
 		this.orderid = oderid;
 

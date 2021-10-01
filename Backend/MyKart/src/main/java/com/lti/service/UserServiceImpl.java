@@ -1,7 +1,12 @@
 package com.lti.service;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import java.util.List;
 
+
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.lti.pojo.Cart;
 import com.lti.pojo.Compare;
@@ -10,54 +15,54 @@ import com.lti.pojo.User;
 import com.lti.pojo.Wishlist;
 import com.lti.repository.UserRepo;
 
+@Service
+@Transactional
 public class UserServiceImpl implements UserService
 {
 	 @Autowired
 	  UserRepo urepo;
 
-	// @Autowired
-	//   MyJPARepo jpaRepo;
+	
 	@Override
 	public int addUser(User user) {
-		// TODO Auto-generated method stub
-		return 0;
+		return urepo.addUser(user);
 	}
 
 	@Override
 	public boolean addAddress(int userid, String address) {
-		// TODO Auto-generated method stub
-		return false;
+		return urepo.addAddress(userid, address);
 	}
 
-	@Override
-	public User updateUser(int userid, User user) {
-		// TODO Auto-generated method stub
-		return null;
-	}
+	
 
 	@Override
 	public void addProductToCart(Cart cart) {
-		// TODO Auto-generated method stub
+		urepo.addProductToCart(cart);
 		
 	}
 
 	@Override
 	public void addProductToWishList(Wishlist wishlist) {
-		// TODO Auto-generated method stub
+		urepo.addProductToWishList(wishlist);
 		
 	}
 
 	@Override
 	public void addPayIdToPayment(Payments payment) {
-		// TODO Auto-generated method stub
+		urepo.addPayIdToPayment(payment);
 		
 	}
 
 	@Override
 	public void addCompare(Compare c) {
-		// TODO Auto-generated method stub
+		urepo.addCompare(c);
 		
+	}
+
+	@Override
+	public List<User> searchUser(int userid) {
+		
+		return urepo.searchUser(userid);
 	} 
-	
 
 }
