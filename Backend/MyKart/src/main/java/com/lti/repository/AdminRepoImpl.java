@@ -24,7 +24,7 @@ public class AdminRepoImpl implements AdminRepo
 	@Override
 	public boolean addRetailer(Retailer r) 
 	{
-		eMan.persist(r);
+		eMan.merge(r);
 		return true;
 	}
 
@@ -50,19 +50,20 @@ public class AdminRepoImpl implements AdminRepo
 		return true;
 	}
 
-	@Override
-	public boolean deleteProduct(int id) {
-		ProductTemp obj=eMan.find(ProductTemp.class, id);
-		obj.setTempproductstatus("Rejected");
-		eMan.merge(obj);
-		return true;
-	}
+	
 
 	@Override
 	public List<Retailer> getRetailer() {
 		List<Retailer> l=eMan.createQuery("from Retailer").getResultList();
 		return l;
 		
+	}
+
+	@Override
+	public boolean deleteProduct(ProductTemp product) {
+		product.setTempproductstatus("Rejected");
+		eMan.merge(product);
+		return true;
 	}
 
 	

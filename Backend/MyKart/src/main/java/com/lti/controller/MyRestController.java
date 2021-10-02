@@ -86,22 +86,11 @@ public class MyRestController
 		return Pservice.getProduct(productcategory);
 	}
 	
-	
-
-	
-
-
-	
-
-	
     
     @Autowired
 
     AdminService as;
     
-   
-    
-
     
     @GetMapping("/cartdetails/{cartid}")
 	public List<Cart> getCartDetails(@PathVariable (name="cartid") int cartid)
@@ -177,10 +166,10 @@ public class MyRestController
 	{
 		return as.acceptProduct(product);
 	}
-	@DeleteMapping("/rejectproduct/{id}")
-	public boolean deleteProduct(@PathVariable(name="id")int id)
+	@PutMapping("/rejectproduct")
+	public boolean deleteProduct(@RequestBody ProductTemp product)
 	{
-		return as.deleteProduct(id);
+		return as.deleteProduct(product);
 	}
 	@PostMapping("/addretailers")
 	public boolean addRetailer(@RequestBody Retailer r) 
