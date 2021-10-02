@@ -11,8 +11,20 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter
 public class MyKartApplication {
 
 	public static void main(String[] args) {
-		System.out.print(false);
+		System.out.print("Welcome");
 		SpringApplication.run(MyKartApplication.class, args);
+	}
+	@SuppressWarnings("deprecation")
+	@Bean
+	public WebMvcConfigurer corsConfigurer()
+	{
+		return new WebMvcConfigurerAdapter() {
+			
+			public void addCorsMappings(CorsRegistry registry) {
+				registry.addMapping("/MyKart/rest").allowedOrigins("http://localhost:4200");
+			}
+			
+		};
 	}
 
 	@SuppressWarnings("deprecation")

@@ -6,11 +6,17 @@ import com.lti.pojo.Product;
 
 
 
+
+
+
 public interface ProductService {
 	
 	public List<Product> getProduct(String type);
+	
+	public Product getAllProductByPID(int pId);
 
 	public List<Product> search(String type);
+<<<<<<< HEAD
 	
 	public List<Product> showallProduct();
 
@@ -27,4 +33,6 @@ public interface ProductService {
 	public List<Product> lowtohighfilter_(String type);
 	
 	public List<Product> hightolowfilter_(String type);
+=======
+>>>>>>> 3b10650616e81ea7aecc83fbee748ec2f7e49a47
 }

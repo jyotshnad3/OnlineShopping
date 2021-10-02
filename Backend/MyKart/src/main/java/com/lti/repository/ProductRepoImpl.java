@@ -21,6 +21,13 @@ public class ProductRepoImpl implements ProductRepo{
 	@Autowired
 	EntityManager eMan;
 
+	@Override
+	public Product findAllProductByPID(int productid) {
+		// TODO Auto-generated method stub
+		Product product =eMan.find(Product.class,productid);
+		return product;
+	}
+
 /*	@Override
 	public List<Product> getProduct() {
 		List<Product> list1 = eMan.createQuery("from Product").getResultList();
@@ -58,4 +65,5 @@ public class ProductRepoImpl implements ProductRepo{
 		
 	}*/
 
+	
 }

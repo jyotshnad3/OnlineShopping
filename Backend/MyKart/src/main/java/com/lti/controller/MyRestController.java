@@ -2,6 +2,7 @@ package com.lti.controller;
 
 import java.util.List;
 
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -18,34 +19,84 @@ import org.springframework.web.bind.annotation.RestController;
 import com.lti.pojo.Product;
 import com.lti.service.ProductService;
 
+
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
 
+import com.lti.service.AdminService;
 import com.lti.service.CartService;
+import com.lti.dto.CartMyDTO;
+import com.lti.dto.WishlistMyDTO;
 import com.lti.pojo.Cart;
 import com.lti.pojo.ProductTemp;
 
-import com.lti.service.RetailerService;
+import com.lti.pojo.Retailer;
 
+import com.lti.pojo.Wishlist;
+
+import com.lti.service.RetailerService;
+import com.lti.service.WishlistService;
+
+
+import com.lti.pojo.User;
+import com.lti.service.RetailerService;
+import com.lti.service.UserService;
 
 
 @RestController
 @RequestMapping("/MyKart/rest")
 @CrossOrigin(origins="http://localhost:4200")
 public class MyRestController 
-{
-
+{  
+	@Autowired
+	UserService userservice;
+	
 	@Autowired
 	ProductService Pservice;
+	
+	@Autowired
+	WishlistService ws;
+	
+	@Autowired
+	RetailerService rs;
+    
+    @Autowired
+    CartService cs;
+	
+	@GetMapping("/getAddress/{userid}")
+	public List<User> getAddress(@PathVariable("userid") int userid)
+	{
+		return userservice.searchUser(userid);
+	}
+	
+	@GetMapping("/getuserbyid/{userid}")
+	public List<User> searchUser(@PathVariable(name="userid") int userid){
+		
+	return userservice.searchUser(userid);
+		
+	}
+
+	
+	
+    @PostMapping(path = "getCart/{cartid}")
+	public List<CartMyDTO> getMyCart(@PathVariable("cartid") int cartid){
+		List<CartMyDTO> dto = cs.findviewCart(cartid);
+		return dto;
+	}
 	
 	@GetMapping("/Product/{productcategory}")
 	public List<Product> productcategory(@PathVariable(name="productcategory") String productcategory)
 	{
 		return Pservice.getProduct(productcategory);
 	}
+<<<<<<< HEAD
+=======
+
+
 	
+<<<<<<< HEAD
 	@GetMapping("/Product")
 	public List<Product> showProducts()
 	{
@@ -105,9 +156,24 @@ public class MyRestController
 
 	@Autowired
 	RetailerService rs;
+=======
+
+
+	
+
+>>>>>>> 1c05f4a7f5d8b85793e1ed66450be20289e5ac7d
+	
+>>>>>>> 3b10650616e81ea7aecc83fbee748ec2f7e49a47
     
     @Autowired
-    CartService cs;
+
+    AdminService as;
+    
+<<<<<<< HEAD
+=======
+
+
+>>>>>>> 1c05f4a7f5d8b85793e1ed66450be20289e5ac7d
     
     @GetMapping("/cartdetails/{cartid}")
 	public List<Cart> getCartDetails(@PathVariable (name="cartid") int cartid)
@@ -128,22 +194,83 @@ public class MyRestController
 		return cs.addToCart(cartid, productid);
 	}
     
+	@GetMapping(path = "/cartdetailsUpdate/{cId}/{addOrMinus}")
+	public boolean updateCart(@PathVariable("cId") int cId,@PathVariable("addOrMinus") int addOrMinus){
+		return cs.updateCart(cId, addOrMinus);
+	}
+	
+	
+	
+	@GetMapping("/wishlistdetails/{wishlistid}")
+	public List<Wishlist> getwishlistDetails(@PathVariable (name="wishlistid") int wishlistid)
+	{
+	  	return ws.viewWishList(wishlistid);
+	}
+
+	@DeleteMapping("/wishlistdetailsD/{wishlistid}")
+	public boolean deletewishlist(@PathVariable (name="wishlistid") int wishlistid)
+	{
+		return ws.deleteWishList(wishlistid);
+	}
+	
+	
+	@GetMapping(path = "/wishlistdetails/{wishlistid}/{productid}") 
+	public int addToWishList(@PathVariable("wishlistid") int wishlistid,@PathVariable("productid") int productid)
+	{
+		return ws.addToWishList(wishlistid, productid);
+	}
+
+	
+	@GetMapping(path = "getWishlist/{wishlistid}")
+	public List<WishlistMyDTO> getMyWishlist(@PathVariable("wishlistid") int wishlistid){
+		List<WishlistMyDTO> dto = ws.findviewWishList(wishlistid);
+		return dto;
+	}
+	
 	
 	@PostMapping("/productsbyretailer")
+
+	//@PostMapping("/addproductsbyretailer")
+
 	public boolean addProduct(@RequestBody ProductTemp product)
 	{
 		return rs.addProduct(product);
 	}
-	@PutMapping("/productsbyretailer")
-	public boolean updateVehicle(@RequestBody ProductTemp product)
+	@PutMapping("/updateproductsbyretailer")
+	public boolean updateProduct(@RequestBody ProductTemp product)
 	{
 		return rs.updateProduct(product);
 	}
-	@GetMapping("/productsbyretailer")
+	@GetMapping("/productstatus")
 	public List<ProductTemp> getProductStatus()
 	{
 		return rs.getProductStatus();
+	}
 
+<<<<<<< HEAD
 	}*/
+=======
+   //----------------------------------------------------
+	@GetMapping("/showretailers")
+	public List<Retailer> getRetailer()
+	{
+		return as.getRetailer();
+	}
+	@PostMapping("/acceptproduct")
+	public boolean acceptProduct(@RequestBody ProductTemp product)  //********
+	{
+		return as.acceptProduct(product);
+	}
+	@PutMapping("/rejectproduct")
+	public boolean deleteProduct(@RequestBody ProductTemp product)
+	{
+		return as.deleteProduct(product);
+	}
+	@PostMapping("/addretailers")
+	public boolean addRetailer(@RequestBody Retailer r) 
+	{
+		return as.addRetailer(r);
+	}
+>>>>>>> 3b10650616e81ea7aecc83fbee748ec2f7e49a47
 	
 }

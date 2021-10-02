@@ -1,6 +1,7 @@
 package com.lti.pojo;
 
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
@@ -9,9 +10,12 @@ import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+
+
 
 @Entity
 @Table(name="tproduct")
@@ -52,7 +56,14 @@ public class Product
 		super();
 		// TODO Auto-generated constructor stub
 	}
-
+     
+	
+	@ManyToMany(mappedBy = "product")
+	List<Cart> cart;
+	
+	@ManyToMany(mappedBy = "product12")
+	List<Wishlist> wishlist;
+	
 	public Product(int productid, int retailerid, String productname, int productprice, String productdesc,
 			int productquantity, String productcategory, String productsubcategory, String productbrand,
 			String productimage) {

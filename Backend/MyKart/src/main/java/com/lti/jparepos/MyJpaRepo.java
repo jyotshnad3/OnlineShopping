@@ -30,6 +30,7 @@ public interface MyJpaRepo extends JpaRepository<Product, String>
 	@Query("Select p from Product p where (p.productname LIKE %?1% OR p.productcategory LIKE %?1% OR p.productsubcategory LIKE %?1%) AND p.productbrand=?2 ORDER BY p.productprice ASC")
 	public List<Product> lowtohigh(String name, String brand);
 
+<<<<<<< HEAD
 	@Query("Select p from Product p where (p.productname LIKE %?1% OR p.productcategory LIKE %?1% OR p.productsubcategory LIKE %?1%) AND p.productbrand=?2 ORDER BY p.productprice DESC")
 	public List<Product> hightolow(String name, String brand);
 	
@@ -42,4 +43,8 @@ public interface MyJpaRepo extends JpaRepository<Product, String>
 	@Query("Select p from Product p where p.productname LIKE %?1% OR p.productcategory LIKE %?1% OR p.productsubcategory LIKE %?1% ORDER BY p.productprice DESC")
 	public List<Product> hightolow_(String name);
 	
+=======
+	
+
+>>>>>>> 3b10650616e81ea7aecc83fbee748ec2f7e49a47
 }
