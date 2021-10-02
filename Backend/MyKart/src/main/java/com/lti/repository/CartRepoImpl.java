@@ -19,8 +19,7 @@ public class CartRepoImpl implements CartRepo{
 	@Autowired
 	private EntityManager eMan;
 	
-	
-
+	/*
 	@Override
 	public int addToCart(int cartid, int productid) {
 		// TODO Auto-generated method stub
@@ -43,7 +42,6 @@ public class CartRepoImpl implements CartRepo{
 			eMan.merge(c);
 			System.out.print(c.getProduct());
 		}
-		
 		
 
 		return 1;
@@ -84,7 +82,7 @@ public class CartRepoImpl implements CartRepo{
 			System.out.println(" no products in cart");
 		}
 		return cart;
-	}
+	}*/
 
 	@Override
 	public boolean updateCart(int cartid, int addOrMinus) {
@@ -118,6 +116,78 @@ public class CartRepoImpl implements CartRepo{
 		       }
 	     }
 	}
+	
+	
+	@Override
+	public int addToCart(int cartid, int productid) {
+		// TODO Auto-generated method stub
+		try {
+		//User u=eMan.find(User.class,userid);
+		//int cartid=u.getCart().getCartid();
+		
+		Cart c=eMan.find(Cart.class, cartid);
+
+		Product p=eMan.find(Product.class, productid);
+		System.out.print(c.getProduct());
+		
+		if(c.getProduct()==null)
+		{
+			List<Product> pl=new ArrayList<Product>();
+			pl.add(p);
+			c.setProduct(pl);
+			eMan.merge(c);
+		}
+		else 
+		{
+			c.getProduct().add(p);
+			eMan.merge(c);
+			System.out.print(c.getProduct());
+		}
+		
+		
+
+		return 1;
+	}
+		catch(Exception e)
+		{
+			return -1;
+		}
+		//return 0;
+
+	}
+	
+	@Override
+	public boolean deleteCartBycId(int cartid) {
+		// TODO Auto-generated method stub
+		try {
+			Cart cart = eMan.find(Cart.class, cartid);
+			eMan.remove(cart);
+
+		} catch (Exception e) {
+			System.out.println("no product deleted or no product there to delete");
+		}
+		return true;
+	}
+	
+	
+	@Override
+	public List<Cart> viewCart(int cartid) {
+		// TODO Auto-generated method stub
+		//User u=eMan.find(User.class,userid);
+		//int cartid=u.getCart().getCartid();
+		List<Cart> cart = null;
+		Query qy=eMan.createQuery("Select e from Cart e where e.cartid=:cartid");
+		try {
+			qy.setParameter("cartid", cartid);
+			cart = qy.getResultList();
+		}
+
+		catch (Exception e) {
+			System.out.println(" no products in cart");
+		}
+		return cart;
+	}
+	
 	
 	
 }

@@ -20,4 +20,5 @@ public void addProductToCart(Cart cart);
 public void addProductToWishList(Wishlist wishlist);
 public void addCompare(Compare c);*/
 
+	public Product findAllProductByPID(int productid);
 }

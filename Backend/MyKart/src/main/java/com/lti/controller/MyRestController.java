@@ -25,19 +25,19 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.lti.service.CartService;
+import com.lti.dto.CartMyDTO;
+import com.lti.dto.WishlistMyDTO;
 import com.lti.pojo.Cart;
 import com.lti.pojo.ProductTemp;
-<<<<<<< HEAD
+
 import com.lti.pojo.Wishlist;
 import com.lti.service.RetailerService;
 import com.lti.service.WishlistService;
 
-
-=======
 import com.lti.pojo.User;
 import com.lti.service.RetailerService;
 import com.lti.service.UserService;
->>>>>>> 9889c3cc21cafbff2a480023318b9b5043e0da65
+
 
 @RestController
 @RequestMapping("/MyKart/rest")
@@ -45,21 +45,6 @@ public class MyRestController
 {  
 	@Autowired
 	UserService userservice;
-	
-	@GetMapping("/getAddress/{userid}")
-	public List<User> getAddress(@PathVariable("userid") int userid)
-	{
-		return userservice.searchUser(userid);
-	}
-	/*
-	@GetMapping("/getuserbyid/{userid}")
-	public List<User> searchUser(@PathVariable(name="userid") int userid){
-		
-	return userservice.searchUser(userid);
-		
-	}
-	/*
-	
 	
 	@Autowired
 	ProductService Pservice;
@@ -73,22 +58,33 @@ public class MyRestController
     @Autowired
     CartService cs;
 	
+	@GetMapping("/getAddress/{userid}")
+	public List<User> getAddress(@PathVariable("userid") int userid)
+	{
+		return userservice.searchUser(userid);
+	}
+	
+	@GetMapping("/getuserbyid/{userid}")
+	public List<User> searchUser(@PathVariable(name="userid") int userid){
+		
+	return userservice.searchUser(userid);
+		
+	}
+	
+	
+    @PostMapping(path = "getCart/{cartid}")
+	public List<CartMyDTO> getMyCart(@PathVariable("cartid") int cartid){
+		List<CartMyDTO> dto = cs.findviewCart(cartid);
+		return dto;
+	}
+	
 	@GetMapping("/Product/{productcategory}")
 	public List<Product> productcategory(@PathVariable(name="productcategory") String productcategory)
 	{
 		return Pservice.getProduct(productcategory);
 	}
 	
-	
-<<<<<<< HEAD
-=======
-	/*
-	@Autowired
-	RetailerService rs;
-    
-    @Autowired
-    CartService cs;
->>>>>>> 9889c3cc21cafbff2a480023318b9b5043e0da65
+
     
     @GetMapping("/cartdetails/{cartid}")
 	public List<Cart> getCartDetails(@PathVariable (name="cartid") int cartid)
@@ -135,6 +131,14 @@ public class MyRestController
 		return ws.addToWishList(wishlistid, productid);
 	}
 	
+	
+	@GetMapping(path = "getWishlist/{wishlistid}")
+	public List<WishlistMyDTO> getMyWishlist(@PathVariable("wishlistid") int wishlistid){
+		List<WishlistMyDTO> dto = ws.findviewWishList(wishlistid);
+		return dto;
+	}
+	
+	
 	@PostMapping("/productsbyretailer")
 	public boolean addProduct(@RequestBody ProductTemp product)
 	{
@@ -149,7 +153,6 @@ public class MyRestController
 	public List<ProductTemp> getProductStatus()
 	{
 		return rs.getProductStatus();
-
 	}
-	*/
+	
 }
