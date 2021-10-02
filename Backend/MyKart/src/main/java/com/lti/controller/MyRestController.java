@@ -3,6 +3,7 @@ package com.lti.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 
@@ -32,6 +33,7 @@ import com.lti.service.RetailerService;
 
 @RestController
 @RequestMapping("/MyKart/rest")
+@CrossOrigin(origins="http://localhost:4200")
 public class MyRestController 
 {
 
@@ -44,7 +46,11 @@ public class MyRestController
 		return Pservice.getProduct(productcategory);
 	}
 	
-	
+	@GetMapping("/Product")
+	public List<Product> showProducts()
+	{
+		return Pservice.showallProduct();
+	}
 
 	@GetMapping("/Product/search/{productname}")
 	public List<Product> productsearch(@PathVariable(name="productname") String productname)
@@ -52,7 +58,48 @@ public class MyRestController
 		return Pservice.search(productname);
 	}
 	
+	@GetMapping("/Product/{productcategory}/{productsubcategory}")
+	public List<Product> Categ_subCate(@PathVariable(name="productcategory") String productcategory, @PathVariable(name="productsubcategory") String productsubcategory)
+	{
+		return Pservice.cate_subcate(productcategory,productsubcategory);
+	}
 	
+	@GetMapping("/Product/search/{productname}/filter/{productbrand}")
+	public List<Product> filterbybrand(@PathVariable(name="productname") String productname, @PathVariable(name="productbrand") String productbrand)
+	{
+		return Pservice.filter(productname,productbrand);
+	}
+	
+	@GetMapping("/Product/search/{productname}/filter/{productbrand}/sort1")
+	public List<Product> lowtohighf(@PathVariable(name="productname") String productname, @PathVariable(name="productbrand") String productbrand)
+	{
+		return Pservice.lowtohighfilter(productname, productbrand);
+	}
+	
+	
+	@GetMapping("/Product/search/{productname}/filter/{productbrand}/sort2")
+	public List<Product> hightolowf(@PathVariable(name="productname") String productname, @PathVariable(name="productbrand") String productbrand)
+	{
+		return Pservice.hightolowfilter(productname, productbrand);
+	}
+	
+	@GetMapping("/Product/search/{productname}/filter/{productbrand}/{minprice}/{maxprice}")
+	public List<Product> priceFilters(@PathVariable(name="productname") String productname, @PathVariable(name="productbrand") String productbrand,@PathVariable(name="minprice") int minprice, @PathVariable(name="maxprice") int maxprice)
+	{
+		return Pservice.priceFilter(productname, productbrand, minprice, maxprice);
+	}
+	
+	@GetMapping("/Product/search/{productname}/sort1")
+	public List<Product> lowtohighf_(@PathVariable(name="productname") String productname)
+	{
+		return Pservice.lowtohighfilter_(productname);
+	}
+	
+	@GetMapping("/Product/search/{productname}/sort2")
+	public List<Product> hightolowf_(@PathVariable(name="productname") String productname)
+	{
+		return Pservice.hightolowfilter_(productname);
+	}
 	
 	/*
 

@@ -28,6 +28,52 @@ public class ProductServiceImpl  implements ProductService{
 		return jparepo.searchproduct(type);
 	}
 
+	@Override
+	public List<Product> showallProduct() {
+	
+		return jparepo.showall();
+	}
+
+	@Override
+	public List<Product> cate_subcate(String type1, String type2) {
+		return jparepo.showcateandsubcate(type1, type2);
+	}
+
+	@Override
+	public List<Product> filter(String type1, String type2) {
+		
+		return jparepo.applyfilter(type1, type2);
+	}
+
+	@Override
+	public List<Product> lowtohighfilter(String type1, String type2) {
+		
+		return jparepo.lowtohigh(type1, type2);
+	}
+
+	@Override
+	public List<Product> hightolowfilter(String type1, String type2) {
+		
+		return jparepo.hightolow(type1, type2);
+	}
+
+	@Override
+	public List<Product> priceFilter(String type1, String type2, int min, int max) {
+		
+		return jparepo.priceFilter(type1, type2, min, max);
+	}
+
+	@Override
+	public List<Product> lowtohighfilter_(String type) {
+		return jparepo.lowtohigh_(type);
+	}
+
+	@Override
+	public List<Product> hightolowfilter_(String type) {
+		return jparepo.hightolow_(type);
+	}
+
+
 	/*@Override
 	public List<Product> getbyPrice(int type) {
 		return jparepo.findByproductprice(type);	
