@@ -51,11 +51,7 @@ public class User
     
 
 
-<<<<<<< HEAD
-=======
-	
 
->>>>>>> 56241b81218b23f07e5e7a589c909788026b4985
 	public Compare getCompare() {
 		return compare;
 	}

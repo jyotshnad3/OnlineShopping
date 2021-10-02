@@ -31,11 +31,9 @@ import com.lti.service.CartService;
 import com.lti.pojo.Cart;
 import com.lti.pojo.ProductTemp;
 
-<<<<<<< HEAD
-=======
+
 import com.lti.pojo.Retailer;
 
->>>>>>> 56241b81218b23f07e5e7a589c909788026b4985
 import com.lti.pojo.Wishlist;
 
 import com.lti.service.RetailerService;
@@ -61,21 +59,14 @@ public class MyRestController
 	{
 		return userservice.searchUser(userid);
 	}
-<<<<<<< HEAD
 
-=======
-	
->>>>>>> 56241b81218b23f07e5e7a589c909788026b4985
 	@GetMapping("/getuserbyid/{userid}")
 	public List<User> searchUser(@PathVariable(name="userid") int userid){
 		
 	return userservice.searchUser(userid);
 		
 	}
-<<<<<<< HEAD
-=======
-	
->>>>>>> 56241b81218b23f07e5e7a589c909788026b4985
+
 	
 
 	
@@ -96,13 +87,12 @@ public class MyRestController
 	
 
 	
-<<<<<<< HEAD
+
 	@Autowired
 	RetailerService rs;
     
     @Autowired
     CartService cs;
-=======
 
 
 	
@@ -115,7 +105,7 @@ public class MyRestController
     
    
     
->>>>>>> 56241b81218b23f07e5e7a589c909788026b4985
+
 
     
     @GetMapping("/cartdetails/{cartid}")
@@ -181,18 +171,16 @@ public class MyRestController
 
 	}
 
-<<<<<<< HEAD
-=======
-   //----------------------------------------------------
+
 	@GetMapping("/showretailers")
 	public List<Retailer> getRetailer()
 	{
 		return as.getRetailer();
 	}
 	@PostMapping("/acceptproduct")
-	public boolean acceptProduct(@RequestBody ProductTemp product)  //********
+	public boolean acceptProduct(@RequestBody ProductTemp product) 
 	{
-		return as.acceptProduct(product);
+	 return as.acceptProduct(product);
 	}
 	@DeleteMapping("/rejectproduct/{id}")
 	public boolean deleteProduct(@PathVariable(name="id")int id)
@@ -204,13 +192,13 @@ public class MyRestController
 	{
 		return as.addRetailer(r);
 	}
-	//------------------------------------------------------
 	
 	
 	
-
 	
 
+	
 
->>>>>>> 56241b81218b23f07e5e7a589c909788026b4985
+
+
 }
