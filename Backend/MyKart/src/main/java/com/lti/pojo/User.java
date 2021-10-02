@@ -50,9 +50,6 @@ public class User
 	private Payments payment;
     
 
-
-	
-
 	public Compare getCompare() {
 		return compare;
 	}

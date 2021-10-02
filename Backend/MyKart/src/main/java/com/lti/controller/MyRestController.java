@@ -28,6 +28,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.lti.service.AdminService;
 import com.lti.service.CartService;
+import com.lti.dto.CartMyDTO;
+import com.lti.dto.WishlistMyDTO;
 import com.lti.pojo.Cart;
 import com.lti.pojo.ProductTemp;
 
@@ -37,7 +39,6 @@ import com.lti.pojo.Wishlist;
 
 import com.lti.service.RetailerService;
 import com.lti.service.WishlistService;
-
 
 
 import com.lti.pojo.User;
@@ -53,21 +54,6 @@ public class MyRestController
 	@Autowired
 	UserService userservice;
 	
-	@GetMapping("/getAddress/{userid}")
-	public List<User> getAddress(@PathVariable("userid") int userid)
-	{
-		return userservice.searchUser(userid);
-	}
-	
-	@GetMapping("/getuserbyid/{userid}")
-	public List<User> searchUser(@PathVariable(name="userid") int userid){
-		
-	return userservice.searchUser(userid);
-		
-	}
-	
-	
-	
 	@Autowired
 	ProductService Pservice;
 	
@@ -80,17 +66,53 @@ public class MyRestController
     @Autowired
     CartService cs;
 	
+	@GetMapping("/getAddress/{userid}")
+	public List<User> getAddress(@PathVariable("userid") int userid)
+	{
+		return userservice.searchUser(userid);
+	}
+	
+	@GetMapping("/getuserbyid/{userid}")
+	public List<User> searchUser(@PathVariable(name="userid") int userid){
+		
+	return userservice.searchUser(userid);
+		
+	}
+
+	
+	
+    @PostMapping(path = "getCart/{cartid}")
+	public List<CartMyDTO> getMyCart(@PathVariable("cartid") int cartid){
+		List<CartMyDTO> dto = cs.findviewCart(cartid);
+		return dto;
+	}
+	
 	@GetMapping("/Product/{productcategory}")
 	public List<Product> productcategory(@PathVariable(name="productcategory") String productcategory)
 	{
 		return Pservice.getProduct(productcategory);
 	}
+<<<<<<< HEAD
+=======
+
+
+	
+
+
+	
+
+>>>>>>> 1c05f4a7f5d8b85793e1ed66450be20289e5ac7d
 	
     
     @Autowired
 
     AdminService as;
     
+<<<<<<< HEAD
+=======
+
+
+>>>>>>> 1c05f4a7f5d8b85793e1ed66450be20289e5ac7d
     
     @GetMapping("/cartdetails/{cartid}")
 	public List<Cart> getCartDetails(@PathVariable (name="cartid") int cartid)
@@ -138,7 +160,17 @@ public class MyRestController
 	}
 
 	
-	@PostMapping("/addproductsbyretailer")
+	@GetMapping(path = "getWishlist/{wishlistid}")
+	public List<WishlistMyDTO> getMyWishlist(@PathVariable("wishlistid") int wishlistid){
+		List<WishlistMyDTO> dto = ws.findviewWishList(wishlistid);
+		return dto;
+	}
+	
+	
+	@PostMapping("/productsbyretailer")
+
+	//@PostMapping("/addproductsbyretailer")
+
 	public boolean addProduct(@RequestBody ProductTemp product)
 	{
 		return rs.addProduct(product);
@@ -152,7 +184,6 @@ public class MyRestController
 	public List<ProductTemp> getProductStatus()
 	{
 		return rs.getProductStatus();
-
 	}
 
    //----------------------------------------------------
@@ -176,12 +207,5 @@ public class MyRestController
 	{
 		return as.addRetailer(r);
 	}
-	//------------------------------------------------------
 	
-	
-	
-
-	
-
-
 }
