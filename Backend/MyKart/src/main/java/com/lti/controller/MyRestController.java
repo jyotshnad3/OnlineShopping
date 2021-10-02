@@ -28,6 +28,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.lti.service.AdminService;
 import com.lti.service.CartService;
+import com.lti.dto.CartMyDTO;
+import com.lti.dto.WishlistMyDTO;
 import com.lti.pojo.Cart;
 import com.lti.pojo.ProductTemp;
 
@@ -38,7 +40,6 @@ import com.lti.pojo.Wishlist;
 
 import com.lti.service.RetailerService;
 import com.lti.service.WishlistService;
-
 
 
 import com.lti.pojo.User;
@@ -54,6 +55,18 @@ public class MyRestController
 	@Autowired
 	UserService userservice;
 	
+	@Autowired
+	ProductService Pservice;
+	
+	@Autowired
+	WishlistService ws;
+	
+	@Autowired
+	RetailerService rs;
+    
+    @Autowired
+    CartService cs;
+	
 	@GetMapping("/getAddress/{userid}")
 	public List<User> getAddress(@PathVariable("userid") int userid)
 	{
@@ -68,6 +81,7 @@ public class MyRestController
 	}
 
 	
+<<<<<<< HEAD
 
 	
 	@Autowired
@@ -77,14 +91,21 @@ public class MyRestController
 	WishlistService ws;
 	
 	
+=======
+	
+    @PostMapping(path = "getCart/{cartid}")
+	public List<CartMyDTO> getMyCart(@PathVariable("cartid") int cartid){
+		List<CartMyDTO> dto = cs.findviewCart(cartid);
+		return dto;
+	}
+>>>>>>> 1c05f4a7f5d8b85793e1ed66450be20289e5ac7d
 	
 	@GetMapping("/Product/{productcategory}")
 	public List<Product> productcategory(@PathVariable(name="productcategory") String productcategory)
 	{
 		return Pservice.getProduct(productcategory);
 	}
-	
-	
+
 
 	
 
@@ -103,8 +124,7 @@ public class MyRestController
 
     AdminService as;
     
-   
-    
+
 
 
     
@@ -154,7 +174,17 @@ public class MyRestController
 	}
 
 	
-	@PostMapping("/addproductsbyretailer")
+	@GetMapping(path = "getWishlist/{wishlistid}")
+	public List<WishlistMyDTO> getMyWishlist(@PathVariable("wishlistid") int wishlistid){
+		List<WishlistMyDTO> dto = ws.findviewWishList(wishlistid);
+		return dto;
+	}
+	
+	
+	@PostMapping("/productsbyretailer")
+
+	//@PostMapping("/addproductsbyretailer")
+
 	public boolean addProduct(@RequestBody ProductTemp product)
 	{
 		return rs.addProduct(product);
@@ -168,7 +198,6 @@ public class MyRestController
 	public List<ProductTemp> getProductStatus()
 	{
 		return rs.getProductStatus();
-
 	}
 
 
@@ -192,6 +221,7 @@ public class MyRestController
 	{
 		return as.addRetailer(r);
 	}
+<<<<<<< HEAD
 	
 	
 	
@@ -201,4 +231,7 @@ public class MyRestController
 
 
 
+=======
+	
+>>>>>>> 1c05f4a7f5d8b85793e1ed66450be20289e5ac7d
 }
