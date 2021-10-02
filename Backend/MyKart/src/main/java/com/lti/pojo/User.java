@@ -50,11 +50,7 @@ public class User
 	private Payments payment;
     
 
-<<<<<<< HEAD
 
-
-=======
->>>>>>> 1c05f4a7f5d8b85793e1ed66450be20289e5ac7d
 	public Compare getCompare() {
 		return compare;
 	}

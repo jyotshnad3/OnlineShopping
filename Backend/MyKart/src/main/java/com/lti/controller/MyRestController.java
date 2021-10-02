@@ -81,24 +81,14 @@ public class MyRestController
 	}
 
 	
-<<<<<<< HEAD
 
 	
-	@Autowired
-	ProductService Pservice;
-	
-	@Autowired
-	WishlistService ws;
-	
-	
-=======
-	
-    @PostMapping(path = "getCart/{cartid}")
+    @GetMapping(path = "getCart/{cartid}")
 	public List<CartMyDTO> getMyCart(@PathVariable("cartid") int cartid){
 		List<CartMyDTO> dto = cs.findviewCart(cartid);
 		return dto;
 	}
->>>>>>> 1c05f4a7f5d8b85793e1ed66450be20289e5ac7d
+
 	
 	@GetMapping("/Product/{productcategory}")
 	public List<Product> productcategory(@PathVariable(name="productcategory") String productcategory)
@@ -106,14 +96,6 @@ public class MyRestController
 		return Pservice.getProduct(productcategory);
 	}
 
-
-	
-
-	@Autowired
-	RetailerService rs;
-    
-    @Autowired
-    CartService cs;
 
 
 	
@@ -221,17 +203,5 @@ public class MyRestController
 	{
 		return as.addRetailer(r);
 	}
-<<<<<<< HEAD
-	
-	
-	
-	
 
-	
-
-
-
-=======
-	
->>>>>>> 1c05f4a7f5d8b85793e1ed66450be20289e5ac7d
 }
