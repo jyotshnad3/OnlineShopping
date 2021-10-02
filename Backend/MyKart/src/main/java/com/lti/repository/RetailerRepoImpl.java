@@ -5,6 +5,8 @@ import javax.persistence.EntityManager;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+
+
 import com.lti.pojo.ProductTemp;
 @Repository
 public class RetailerRepoImpl implements RetailerRepo
@@ -15,7 +17,7 @@ public class RetailerRepoImpl implements RetailerRepo
 	@Override
 	public boolean addProduct(ProductTemp product) 
 	{
-		eMan.persist(product);
+		eMan.merge(product);
 		return true;
 	}
 
@@ -28,10 +30,14 @@ public class RetailerRepoImpl implements RetailerRepo
 	}
 
 	@Override
-	public List<ProductTemp> getProductStatus() 
-	{
+	public List<ProductTemp> getProductStatus() {
 		List<ProductTemp> l=eMan.createQuery("from ProductTemp").getResultList();
 		return l;
 	}
+
+	
+	
+
+	
 
 }

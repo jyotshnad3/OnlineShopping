@@ -1,9 +1,11 @@
-package com.lti.repository;
-import java.util.*;
+package com.lti.service;
+
+import java.util.List;
 
 import com.lti.pojo.ProductTemp;
 import com.lti.pojo.Retailer;
-public interface AdminRepo 
+
+public interface AdminService 
 {
 	public boolean addRetailer(Retailer r);
 	public boolean acceptProduct(ProductTemp product);

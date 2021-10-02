@@ -6,10 +6,14 @@ import com.lti.pojo.Product;
 
 
 
+
+
+
 public interface ProductService {
 	
 	public List<Product> getProduct(String type);
 	
 	public Product getAllProductByPID(int pId);
 
+	public List<Product> search(String type);
 }

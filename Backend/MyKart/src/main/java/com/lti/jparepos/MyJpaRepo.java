@@ -15,4 +15,6 @@ public interface MyJpaRepo extends JpaRepository<Product, String>
 	//Printing Product by category
 	public List<Product> findByproductcategory(String type);
 
+	
+
 }
