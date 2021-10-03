@@ -104,6 +104,25 @@ public class UserRepoImpl implements UserRepo {
 		return usr;
 	}
 
+
+	@Override
+	public int searchWishlistOfUser(int userid) 
+	{
+		User u=eMan.find(User.class, userid);
+		int wishlistid=u.getWishlist().getWishlistid();
+		
+		return wishlistid;
+	}
+
+
+	@Override
+	public int searchCartOfUser(int userid) {
+		User u=eMan.find(User.class, userid);
+		int cartid=u.getCart().getCartid();
+		return cartid;
+		
+	}
+
 	
 }
 

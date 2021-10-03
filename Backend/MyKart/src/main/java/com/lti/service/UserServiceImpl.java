@@ -63,6 +63,18 @@ public class UserServiceImpl implements UserService
 	public List<User> searchUser(int userid) {
 		
 		return urepo.searchUser(userid);
+	}
+
+	@Override
+	public int searchWishlistOfUser(int userid) {
+		
+		return urepo.searchWishlistOfUser(userid);
+	}
+
+	@Override
+	public int searchCartOfUser(int userid) {
+		
+		return urepo.searchCartOfUser(userid);
 	} 
 
 }

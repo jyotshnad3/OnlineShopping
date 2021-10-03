@@ -11,5 +11,7 @@ public interface CartRepo {
 	public List<Cart> viewCart(int userid);
 	public boolean updateCart(int cartid, int addOrMinus);
 	
+	public boolean deleteItemByid (int cartid,int productid);
+	
     
 }

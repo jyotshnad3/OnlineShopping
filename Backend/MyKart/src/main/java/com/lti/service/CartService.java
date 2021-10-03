@@ -13,4 +13,6 @@ public interface CartService {
 	public boolean updateCart(int cartid, int addOrMinus);
 	
 	public List<CartMyDTO> findviewCart(int cartid);
+	
+	public boolean deleteItemByid(int cartid, int productid);
 }

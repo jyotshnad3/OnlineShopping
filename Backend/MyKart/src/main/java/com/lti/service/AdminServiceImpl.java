@@ -29,16 +29,17 @@ public class AdminServiceImpl implements AdminService
 		return ar.acceptProduct(product);
 	}
 
-	@Override
-	public boolean deleteProduct(int id) {
-		
-		return ar.deleteProduct(id);
-	}
+	
 
 	@Override
 	public List<Retailer> getRetailer() {
 		
 		return ar.getRetailer();
+	}
+
+	@Override
+	public boolean deleteProduct(ProductTemp product) {
+		return ar.deleteProduct(product);
 	}
 
 }

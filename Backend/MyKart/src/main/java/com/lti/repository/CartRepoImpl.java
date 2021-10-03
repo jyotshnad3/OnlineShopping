@@ -124,9 +124,11 @@ public class CartRepoImpl implements CartRepo{
 		try {
 		//User u=eMan.find(User.class,userid);
 		//int cartid=u.getCart().getCartid();
-		
+			//Cart cart = new Cart();
+			//cart.setQuantity(1); 
+			//cart.
 		Cart c=eMan.find(Cart.class, cartid);
-
+         //c.setQuantity(1);
 		Product p=eMan.find(Product.class, productid);
 		System.out.print(c.getProduct());
 		
@@ -186,6 +188,25 @@ public class CartRepoImpl implements CartRepo{
 			System.out.println(" no products in cart");
 		}
 		return cart;
+	}
+
+
+	@Override
+	public boolean deleteItemByid(int cartid, int productid) {
+		// TODO Auto-generated method stub
+		Cart c=eMan.find(Cart.class, cartid);
+        Product p=eMan.find(Product.class, productid);
+        try {
+			if(c.getProduct().contains(p))
+			{
+				c.getProduct().remove(p);
+				eMan.merge(c);
+			}
+		}
+        catch (Exception e) {
+			System.out.println(" no product found in cart");
+		}
+		return true;
 	}
 	
 	

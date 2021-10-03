@@ -90,6 +90,12 @@ public class CartServiceImpl implements CartService{
 		return dto;
 	}
 
+	@Override
+	public boolean deleteItemByid(int cartid, int productid) {
+		// TODO Auto-generated method stub
+		return cartrepo.deleteItemByid(cartid, productid);
+	}
+
 
 
 }

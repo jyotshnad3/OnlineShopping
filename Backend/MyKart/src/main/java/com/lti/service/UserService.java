@@ -25,7 +25,8 @@ public interface UserService
 	public void addPayIdToPayment(Payments payment);
 	public void addCompare(Compare c);
 	public List<User> searchUser(int userid);
-	
+	public int searchWishlistOfUser(int userid);
+	public int searchCartOfUser(int userid);
 	
 	
 	

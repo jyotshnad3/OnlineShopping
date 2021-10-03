@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 
 
-import org.springframework.web.bind.annotation.PathVariable;
+
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -23,8 +23,7 @@ import com.lti.service.ProductService;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+
 
 import com.lti.service.AdminService;
 import com.lti.service.CartService;
@@ -80,15 +79,20 @@ public class MyRestController
 		
 	}
 
-	
-
-	
-    @GetMapping(path = "getCart/{cartid}")
-	public List<CartMyDTO> getMyCart(@PathVariable("cartid") int cartid){
-		List<CartMyDTO> dto = cs.findviewCart(cartid);
-		return dto;
+	@GetMapping("/getwishlistidbyuser/{userid}")
+	public int searchWishlistOfUser(@PathVariable(name="userid") int userid){
+		
+	return userservice.searchWishlistOfUser(userid);
+		
 	}
-
+	
+	@GetMapping("/getcartidbyuser/{userid}")
+	public int searchCartOfUser(@PathVariable(name="userid") int userid){
+		
+	return userservice.searchCartOfUser(userid);
+		
+	}
+	
 	
 	@GetMapping("/Product/{productcategory}")
 	public List<Product> productcategory(@PathVariable(name="productcategory") String productcategory)
@@ -96,18 +100,69 @@ public class MyRestController
 		return Pservice.getProduct(productcategory);
 	}
 
+	@GetMapping("/Product")
+	public List<Product> showProducts()
+	{
+		return Pservice.showallProduct();
+	}
 
-
+	@GetMapping("/Product/search/{productname}")
+	public List<Product> productsearch(@PathVariable(name="productname") String productname)
+	{
+		return Pservice.search(productname);
+	}
 	
-
+	@GetMapping("/Product/{productcategory}/{productsubcategory}")
+	public List<Product> Categ_subCate(@PathVariable(name="productcategory") String productcategory, @PathVariable(name="productsubcategory") String productsubcategory)
+	{
+		return Pservice.cate_subcate(productcategory,productsubcategory);
+	}
 	
+	@GetMapping("/Product/search/{productname}/filter/{productbrand}")
+	public List<Product> filterbybrand(@PathVariable(name="productname") String productname, @PathVariable(name="productbrand") String productbrand)
+	{
+		return Pservice.filter(productname,productbrand);
+	}
+	
+	@GetMapping("/Product/search/{productname}/filter/{productbrand}/sort1")
+	public List<Product> lowtohighf(@PathVariable(name="productname") String productname, @PathVariable(name="productbrand") String productbrand)
+	{
+		return Pservice.lowtohighfilter(productname, productbrand);
+	}
+	
+	
+	@GetMapping("/Product/search/{productname}/filter/{productbrand}/sort2")
+	public List<Product> hightolowf(@PathVariable(name="productname") String productname, @PathVariable(name="productbrand") String productbrand)
+	{
+		return Pservice.hightolowfilter(productname, productbrand);
+	}
+	
+	@GetMapping("/Product/search/{productname}/filter/{productbrand}/{minprice}/{maxprice}")
+	public List<Product> priceFilters(@PathVariable(name="productname") String productname, @PathVariable(name="productbrand") String productbrand,@PathVariable(name="minprice") int minprice, @PathVariable(name="maxprice") int maxprice)
+	{
+		return Pservice.priceFilter(productname, productbrand, minprice, maxprice);
+	}
+	
+	@GetMapping("/Product/search/{productname}/sort1")
+	public List<Product> lowtohighf_(@PathVariable(name="productname") String productname)
+	{
+		return Pservice.lowtohighfilter_(productname);
+	}
+	
+	@GetMapping("/Product/search/{productname}/sort2")
+	public List<Product> hightolowf_(@PathVariable(name="productname") String productname)
+	{
+		return Pservice.hightolowfilter_(productname);
+	}
+	
+	
+ 
+
     
     @Autowired
 
     AdminService as;
     
-
-
 
     
     @GetMapping("/cartdetails/{cartid}")
@@ -117,7 +172,7 @@ public class MyRestController
 	}
 
 	@DeleteMapping("/cartdetailsD/{cartid}")
-	public boolean deleteVehicle(@PathVariable (name="cartid") int cartid)
+	public boolean deleteCart(@PathVariable (name="cartid") int cartid)
 	{
 		return cs.deleteCartBycId(cartid);
 	}
@@ -134,6 +189,19 @@ public class MyRestController
 		return cs.updateCart(cId, addOrMinus);
 	}
 	
+	
+	@GetMapping("/cartdetailsDelete/{cartid}/{productid}")
+    public boolean deleteItemInCart(@PathVariable("cartid") int cartid,@PathVariable("productid") int productid)
+    {
+		return cs.deleteItemByid(cartid, productid);
+    }
+
+	
+    @GetMapping(path = "getCart/{cartid}")
+	public List<CartMyDTO> getMyCart(@PathVariable("cartid") int cartid){
+		List<CartMyDTO> dto = cs.findviewCart(cartid);
+		return dto;
+	}
 	
 	
 	@GetMapping("/wishlistdetails/{wishlistid}")
@@ -193,10 +261,10 @@ public class MyRestController
 	{
 	 return as.acceptProduct(product);
 	}
-	@DeleteMapping("/rejectproduct/{id}")
-	public boolean deleteProduct(@PathVariable(name="id")int id)
+	@PutMapping("/rejectproduct")
+	public boolean deleteProduct(@RequestBody ProductTemp product)
 	{
-		return as.deleteProduct(id);
+		return as.deleteProduct(product);
 	}
 	@PostMapping("/addretailers")
 	public boolean addRetailer(@RequestBody Retailer r) 

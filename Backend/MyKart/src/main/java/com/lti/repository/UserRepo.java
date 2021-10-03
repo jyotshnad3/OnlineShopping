@@ -26,18 +26,7 @@ public interface UserRepo
 	public void addProductToWishList(Wishlist wishlist);
 	public void addPayIdToPayment(Payments payment);
 	public void addCompare(Compare c);
-	
-	/*public List<Cart> getCartOfUser(int userid);
-	
-	public List<Wishlist> getWishlistOfUser(int userid);
-	//public User updateUser(int userid, User user);
-	public List<Product> findAllProductByCategory(String keyword);
-	
-	public Product findAllProductByProductid(int pId); 
-	public User getUserById(int userid);
-	public int getUserByEmailAndPassword(String email,String password);
-	public User getUserByEmail(String email); */
-	
-
+	public int searchWishlistOfUser(int userid);
+	public int searchCartOfUser(int userid);
 
 }
